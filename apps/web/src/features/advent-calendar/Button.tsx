@@ -5,7 +5,6 @@ const variants = cva("", {
   variants: {
     variant: {
       disbled: "",
-      
     },
   },
 });

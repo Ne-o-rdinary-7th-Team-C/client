@@ -11,8 +11,7 @@ const $queryKeys = {
   questionsByDate: (date: string) => ["questions", date],
 };
 
-export const userQueryOptions = () =>
-  queryOptions({ queryKey: $queryKeys.user(), queryFn: getUser });
+export const userQueryOptions = () => queryOptions({ queryKey: $queryKeys.user(), queryFn: getUser });
 
 type PostUserLoginRequest = {
   login_id: string;
@@ -24,13 +23,8 @@ type PostUserLoginResponse = ApiResponse<{
   refresh_token: string;
 }>;
 
-const postUserLogin = async (
-  body: PostUserLoginRequest
-): Promise<PostUserLoginResponse> => {
-  return http.post<PostUserLoginRequest, PostUserLoginResponse>(
-    "/user/login",
-    body
-  );
+const postUserLogin = async (body: PostUserLoginRequest): Promise<PostUserLoginResponse> => {
+  return http.post<PostUserLoginRequest, PostUserLoginResponse>("/user/login", body);
 };
 
 // get 요청이 아닌 것은 모두 mutation으로 만듭니다.
