@@ -12,6 +12,7 @@ export default function Page() {
   const auth = useAuthState();
   const router = useRouter();
   const params = useParams<{ date: string }>();
+
   return (
     <QuestionAnswer
       targetDate={params.date}
