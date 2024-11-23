@@ -1,0 +1,11 @@
+"@app/web":
+  - changed-files:
+      - any-glob-to-any-file: "apps/web/**"
+
+"@app/native":
+  - changed-files:
+      - any-glob-to-any-file: "apps/native/**"
+
+"packages":
+  - changed-files:
+      - any-glob-to-any-file: "packages/**"

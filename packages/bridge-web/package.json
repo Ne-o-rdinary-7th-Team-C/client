@@ -1,0 +1,22 @@
+{
+  "name": "@internal/bridge-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {},
+  "exports": {
+    ".": "./src/index.tsx"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@internal/typescript-config": "workspace:*",
+    "typescript": "~5.6.2"
+  },
+  "peerDependencies": {
+    "@internal/bridge": "workspace:*"
+  },
+  "dependencies": {
+    "@webview-bridge/web": "^1.7.2"
+  }
+}
