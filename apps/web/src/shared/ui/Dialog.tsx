@@ -3,6 +3,7 @@ import { cn } from "./cn";
 import { forwardRef } from "react";
 
 export const Root = DialogPrimtive.Root;
+export const Close = DialogPrimtive.Close;
 export const Trigger = DialogPrimtive.Trigger;
 export const Content = forwardRef<
   React.ElementRef<typeof DialogPrimtive.Content>,
