@@ -1,7 +1,7 @@
 import { Providers } from "~/src/providers";
 import type { Metadata } from "next";
 import "./globals.css";
-import { Pretendard } from "~/src/shared/pretendard/Pretendard";
+import { Pretendard } from "~/src/shared/fonts/pretendard/Pretendard";
 
 export const metadata: Metadata = {
   title: "Create Next App",
