@@ -14,11 +14,6 @@ export const IdAndPasswordStep = (props: Props) => {
   const { mutate } = useRegisterMutation();
   const login = useLogin();
 
-  mutate(undefined, {
-    onSuccess: async (data) => {
-      login("액세스토큰 받았어요");
-    },
-  });
   return (
     <div>
       <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
