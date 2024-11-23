@@ -17,7 +17,7 @@ const SOCIAL_SHARE_LIST = [
 ];
 
 export const SocialDrawer = (props: { isOpen: boolean; onClose: () => void; link: string }) => {
-  const { isOpen, onClose, link } = props;
+  const { isOpen, onClose } = props;
   return (
     <Drawer.Root open={isOpen} onOpenChange={onClose}>
       <Drawer.Portal>
