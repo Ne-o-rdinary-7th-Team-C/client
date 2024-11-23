@@ -4,7 +4,19 @@ import { forwardRef } from "react";
 
 export const Root = DialogPrimtive.Root;
 export const Trigger = DialogPrimtive.Trigger;
-export const Content = DialogPrimtive.Content;
+export const Content = forwardRef<
+  React.ElementRef<typeof DialogPrimtive.Content>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimtive.Content>
+>(({ className, ...props }, ref) => (
+  <DialogPrimtive.Content
+    ref={ref}
+    className={cn(
+      " w-screen max-w-[418px] fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]",
+      className,
+    )}
+    {...props}
+  />
+));
 
 export const Overlay = forwardRef<
   React.ElementRef<typeof DialogPrimtive.Overlay>,
@@ -29,3 +41,5 @@ export const Overlay = forwardRef<
   );
 });
 export const Portal = DialogPrimtive.Portal;
+export const Title = DialogPrimtive.Title;
+export const Description = DialogPrimtive.Description;
