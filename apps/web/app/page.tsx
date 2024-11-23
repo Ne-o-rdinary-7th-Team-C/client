@@ -1,7 +1,5 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { toast } from "sonner";
 import { $Routes } from "~/src/routes";
 import { Button } from "~/src/shared/ui/button";
 import { FixedBottom } from "~/src/shared/ui/FixedBottom";
@@ -9,11 +7,6 @@ import { FixedBottom } from "~/src/shared/ui/FixedBottom";
 export default function First() {
   const router = useRouter();
 
-  useEffect(() => {
-    setTimeout(() => {
-      toast.success("gd");
-    }, 3000);
-  }, []);
   return (
     <div className={"h-screen py-[40px] px-[16px] flex-1"}>
       <div className={"text-center font-bold text-[28px] leading-[38px] my-[20px]"}>
