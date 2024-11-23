@@ -12,6 +12,7 @@ export default function Page() {
   // date 가지고 12월 3일 같은 포맷만들기
   // 제출하면 일어날일을 정의하기
   const { data } = useSuspenseQuery(userQueryOptions({ id: Number.parseInt(params.id) }));
+
   const mutation = usePostQuestions();
   const username = data.success.nickname ?? "";
 
@@ -22,10 +23,15 @@ export default function Page() {
       <QuestionForm
         username={username}
         onNext={({ nickname, answer }) => {
-          mutation.mutate({ nickname, answer, id: params.id, date: params.date });
+          mutation.mutate({
+            author_nickname: nickname,
+            questioned_user_id: Number.parseInt(params.id),
+            assigned_date: params.date,
+            content: answer,
+          });
           router.push("/");
         }}
-        date={params.id}
+        date={params.date}
       />
     </div>
   );
