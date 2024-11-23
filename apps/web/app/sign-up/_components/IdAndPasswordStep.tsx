@@ -15,11 +15,6 @@ export const IdAndPasswordStep = (props: Props) => {
   const { mutate } = useRegisterMutation();
   const login = useLogin();
 
-  // mutate(undefined, {
-  //   onSuccess: async (data) => {
-  //     login("액세스토큰 받았어요");
-  //   },
-  // });
   return (
     <div className="flex flex-col justify-between h-screen">
       <div>
