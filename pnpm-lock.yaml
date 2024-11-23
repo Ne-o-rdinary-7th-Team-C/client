@@ -296,6 +296,9 @@ importers:
       '@suspensive/react':
         specifier: 'catalog:'
         version: 2.18.5(react@19.0.0-rc-66855b96-20241106)
+      '@suspensive/react-query':
+        specifier: ^2.18.7
+        version: 2.18.7(@suspensive/react@2.18.5(react@19.0.0-rc-66855b96-20241106))(@tanstack/react-query@5.60.5(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       '@tanstack/react-query':
         specifier: catalog:react-query5
         version: 5.60.5(react@19.0.0-rc-66855b96-20241106)
@@ -1274,6 +1277,15 @@ packages:
     engines: {node: '>=16.0.0', yarn: '>=1.22.18'}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+
+  '@colors/colors@1.5.0':
+    resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
+    engines: {node: '>=0.1.90'}
+
+  '@commander-js/extra-typings@12.1.0':
+    resolution: {integrity: sha512-wf/lwQvWAA0goIghcb91dQYpkLBcyhOhQNqG/VgWhnKzgt+UOMvra7EX/2fv70arm5RW+PUHoQHHDa6/p77Eqg==}
+    peerDependencies:
+      commander: ~12.1.0
 
   '@commitlint/cli@19.5.0':
     resolution: {integrity: sha512-gaGqSliGwB86MDmAAKAtV9SV1SHdmN8pnGq4EJU4+hLisQ7IFfx4jvU4s+pk6tl0+9bv6yT+CaZkufOinkSJIQ==}
@@ -2602,6 +2614,41 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
+  '@suspensive/react-query-4@2.18.7':
+    resolution: {integrity: sha512-gZos71bRjyta6rPvHrfE7iM1J0+4ccRn0K+vIS8VQWHpMRzBngYVL+6IB1l9pUdM6fO70mjMPT09fJ89bLeBUQ==}
+    peerDependencies:
+      '@suspensive/react': ^2.18.7
+      '@tanstack/react-query': ^4
+      react: ^18
+    peerDependenciesMeta:
+      '@suspensive/react':
+        optional: true
+      '@tanstack/react-query':
+        optional: true
+
+  '@suspensive/react-query-5@2.18.7':
+    resolution: {integrity: sha512-sDG1e3rw2Vgngkd0S1d+cNlz1exRlXoI9dBonbAsxbVZtrrBOrsRk6HZqbgzrOEJ2iFa2+vxZYwXOddQd6rHew==}
+    peerDependencies:
+      '@suspensive/react': ^2.18.7
+      '@tanstack/react-query': ^5
+      react: ^18
+    peerDependenciesMeta:
+      '@suspensive/react':
+        optional: true
+      '@tanstack/react-query':
+        optional: true
+
+  '@suspensive/react-query@2.18.7':
+    resolution: {integrity: sha512-d5phjNw3xxElUlmyhaGAc8A48hfqNb1lwEfrBTyMc1FgtTnpW2SJVuaXXjNJW5SwMVtMXuBD8C8N5YV1iJiRuw==}
+    hasBin: true
+    peerDependencies:
+      '@suspensive/react': ^2.18.7
+      '@tanstack/react-query': ^4 || ^5
+      react: ^18
+    peerDependenciesMeta:
+      '@suspensive/react':
+        optional: true
+
   '@suspensive/react@2.18.5':
     resolution: {integrity: sha512-VrC+FL+u/87UszCIOrW6mFEv5A48/x/ESHZuSJHoQVNolrT28PjrY1ls8ckF7JYyAqMsdKr5kAdJXU1M8Fx/Rg==}
     peerDependencies:
@@ -3491,6 +3538,10 @@ packages:
   cli-spinners@2.9.2:
     resolution: {integrity: sha512-ywqV+5MmyL4E7ybXgKys4DugZbX0FC6LnwrhjuykIjnK9k8OQacQ7axGKnjDXWNhns0xot3bZI5h55H8yo9cJg==}
     engines: {node: '>=6'}
+
+  cli-table3@0.6.5:
+    resolution: {integrity: sha512-+W/5efTR7y5HRD7gACw9yQjqMVvEMLBHmboM/kPWam+H+Hmyrgjh6YncVKK122YZkXrLudzTuAukUw9FnMf7IQ==}
+    engines: {node: 10.* || >= 12.*}
 
   client-only@0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
@@ -8804,6 +8855,13 @@ snapshots:
       - '@chromatic-com/playwright'
       - react
 
+  '@colors/colors@1.5.0':
+    optional: true
+
+  '@commander-js/extra-typings@12.1.0(commander@12.1.0)':
+    dependencies:
+      commander: 12.1.0
+
   '@commitlint/cli@19.5.0(@types/node@22.9.0)(typescript@5.6.3)':
     dependencies:
       '@commitlint/format': 19.5.0
@@ -10672,6 +10730,32 @@ snapshots:
     dependencies:
       storybook: 8.4.5(prettier@3.3.3)
 
+  '@suspensive/react-query-4@2.18.7(@suspensive/react@2.18.5(react@19.0.0-rc-66855b96-20241106))(@tanstack/react-query@5.60.5(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      react: 19.0.0-rc-66855b96-20241106
+    optionalDependencies:
+      '@suspensive/react': 2.18.5(react@19.0.0-rc-66855b96-20241106)
+      '@tanstack/react-query': 5.60.5(react@19.0.0-rc-66855b96-20241106)
+
+  '@suspensive/react-query-5@2.18.7(@suspensive/react@2.18.5(react@19.0.0-rc-66855b96-20241106))(@tanstack/react-query@5.60.5(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      react: 19.0.0-rc-66855b96-20241106
+    optionalDependencies:
+      '@suspensive/react': 2.18.5(react@19.0.0-rc-66855b96-20241106)
+      '@tanstack/react-query': 5.60.5(react@19.0.0-rc-66855b96-20241106)
+
+  '@suspensive/react-query@2.18.7(@suspensive/react@2.18.5(react@19.0.0-rc-66855b96-20241106))(@tanstack/react-query@5.60.5(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      '@commander-js/extra-typings': 12.1.0(commander@12.1.0)
+      '@suspensive/react-query-4': 2.18.7(@suspensive/react@2.18.5(react@19.0.0-rc-66855b96-20241106))(@tanstack/react-query@5.60.5(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+      '@suspensive/react-query-5': 2.18.7(@suspensive/react@2.18.5(react@19.0.0-rc-66855b96-20241106))(@tanstack/react-query@5.60.5(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+      '@tanstack/react-query': 5.60.5(react@19.0.0-rc-66855b96-20241106)
+      cli-table3: 0.6.5
+      commander: 12.1.0
+      react: 19.0.0-rc-66855b96-20241106
+    optionalDependencies:
+      '@suspensive/react': 2.18.5(react@19.0.0-rc-66855b96-20241106)
+
   '@suspensive/react@2.18.5(react@18.3.1)':
     dependencies:
       react: 18.3.1
@@ -11733,6 +11817,12 @@ snapshots:
       restore-cursor: 2.0.0
 
   cli-spinners@2.9.2: {}
+
+  cli-table3@0.6.5:
+    dependencies:
+      string-width: 4.2.3
+    optionalDependencies:
+      '@colors/colors': 1.5.0
 
   client-only@0.0.1: {}
 
