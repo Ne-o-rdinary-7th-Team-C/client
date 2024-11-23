@@ -4,8 +4,6 @@ import { QueryClient, QueryClientProvider, QueryErrorResetBoundary } from "@tans
 import { OverlayProvider } from "overlay-kit";
 import { PropsWithChildren, useEffect, useState } from "react";
 import { Toaster } from "sonner";
-import { useAuthState } from "./shared/auth";
-import { httpInstance } from "./http";
 
 export const Providers = ({ children }: PropsWithChildren) => {
   const [defaultProps] = useState(() => new DefaultProps({ Delay: { ms: 200 } }));
@@ -17,7 +15,7 @@ export const Providers = ({ children }: PropsWithChildren) => {
             throwOnError: true,
             staleTime: 1000 * 60 * 5,
             gcTime: 1000 * 60 * 10,
-            retry: 3,
+            retry: 0,
           },
         },
       }),

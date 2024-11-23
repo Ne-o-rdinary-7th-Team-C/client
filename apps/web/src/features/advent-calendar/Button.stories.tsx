@@ -13,8 +13,8 @@ export const Default: StoryObj = {
           <AdventCalendarButton>1</AdventCalendarButton>
           <AdventCalendarButton>2</AdventCalendarButton>
           <AdventCalendarButton>3</AdventCalendarButton>
-          <AdventCalendarButton>4</AdventCalendarButton>
-          <AdventCalendarButton>5</AdventCalendarButton>
+          <AdventCalendarButton selected>4</AdventCalendarButton>
+          <AdventCalendarButton disabled>5</AdventCalendarButton>
           <AdventCalendarButton>6</AdventCalendarButton>
         </div>
       </GlobalLayout>
