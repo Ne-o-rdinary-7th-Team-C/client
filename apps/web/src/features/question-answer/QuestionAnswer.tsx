@@ -4,6 +4,7 @@ import { FixedBottom } from "~/src/shared/ui/FixedBottom";
 import { Text } from "~/src/shared/ui/text";
 import { ChevronLeftIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
+import { useInputState } from "@xionwcfm/react";
 
 type Props = {
   onSecondaryClick?: () => void;
@@ -15,6 +16,7 @@ type Props = {
 
 export const QuestionAnswer = (props: Props) => {
   const router = useRouter();
+  const [answer, setAnswer] = useInputState();
 
   return (
     <div className="relative w-full h-screen bg-gray-100 px-[16px] py-[40px] overflow-hidden">
@@ -35,7 +37,7 @@ export const QuestionAnswer = (props: Props) => {
                 <ChevronLeftIcon className="text-black w-[20px] h-[20px]" />
               </button>
 
-              <Text variant="display01">12월 {props.targetDate}</Text>
+              <Text variant="display01">{props.targetDate}</Text>
             </div>
             <div className="mt-[24px]">
               <Text variant="subhead03" className="text-primaryColor2">
@@ -54,6 +56,8 @@ export const QuestionAnswer = (props: Props) => {
             <textarea
               placeholder="답변을 입력해주세요."
               className="p-4 h-[120px] w-full border-[1px] border-white rounded-small bg-[rgba(255,255,255,0.85)]  text-[14px] shadow-sm"
+              value={answer}
+              onChange={setAnswer}
             ></textarea>
           </div>
         </div>
@@ -63,7 +67,7 @@ export const QuestionAnswer = (props: Props) => {
           <Button variant="outline" size="md" onClick={props.onSecondaryClick} className="">
             이미지 업로드
           </Button>
-          <Button size="md" onClick={() => props.onPrimaryClick?.("답변 내용")} className="">
+          <Button size="md" onClick={() => props.onPrimaryClick?.(answer)} className="">
             답변하기
           </Button>
         </FixedBottom>

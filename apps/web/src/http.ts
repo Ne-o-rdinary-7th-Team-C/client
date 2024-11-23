@@ -7,8 +7,11 @@ export const httpInstance = createInstance({
     "Content-Type": "application/json",
     Accept: "*/*",
   },
-  credentials: "include",
-  prefixUrl: "https://test2.shop/",
+
+  prefixUrl: "https://umc.skyofseoul.synology.me",
+
+  // credentials: "include",
+
   hooks: {
     beforeRequest: [
       (request) => {
@@ -28,5 +31,5 @@ export const httpInstance = createInstance({
 export const authHttp = createHttp(httpInstance);
 
 export const http = createHttp({
-  prefixUrl: "https://test2.shop/",
+  prefixUrl: "https://umc.skyofseoul.synology.me",
 });
