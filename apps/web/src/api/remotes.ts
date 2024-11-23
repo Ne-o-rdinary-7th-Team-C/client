@@ -9,11 +9,11 @@ const $queryKeys = {
   user: () => ["user"],
   questions: () => ["questions"],
   questionsByDate: (date: string) => ["questions", date],
-  questionsViewUser: (user_id: string)=> ["questions", user_id],
-  questionsViewUserDate: (params:{
+  questionsViewUser: (user_id: string) => ["questions", user_id],
+  questionsViewUserDate: (params: {
     user_id: string;
     date: string;
-  })=> ["questions", params]
+  }) => ["questions", params],
 };
 
 export const userQueryOptions = () => queryOptions({ queryKey: $queryKeys.user(), queryFn: getUser });
@@ -146,11 +146,11 @@ type PostQuestionsAnswerResponse = ApiResponse<{
   content: string;
 }>;
 /*** */
-const postQuestionsAnswer = async (param: PostQuestionsAnswerRequest & {question_id:string}) => {
-  return http.post<any, PostQuestionsAnswerResponse>(`/${param.question_id}/answer`,param );
+const postQuestionsAnswer = async (param: PostQuestionsAnswerRequest & { question_id: string }) => {
+  return http.post<any, PostQuestionsAnswerResponse>(`/${param.question_id}/answer`, param);
 };
 
-export const useQuestionsAnswer = createMutation({ mutationFn: postQuestionsAnswer })
+export const useQuestionsAnswer = createMutation({ mutationFn: postQuestionsAnswer });
 
 /*** */
 type GetQuestionsViewUserResponse = ApiResponse<number[]>;
@@ -159,8 +159,11 @@ const getQuestionsViewUser = async (param: { user_id: string }) => {
   return http.get<GetQuestionsViewUserResponse>(`/questions/view/user/${param.user_id}`);
 };
 
-export const userQueryQuestionsViewUser = (param: { user_id: string }) => queryOptions({ queryKey: $queryKeys.questionsViewUser(param.user_id), queryFn: async ()=> getQuestionsViewUser(param) });
-
+export const userQueryQuestionsViewUser = (param: { user_id: string }) =>
+  queryOptions({
+    queryKey: $queryKeys.questionsViewUser(param.user_id),
+    queryFn: async () => getQuestionsViewUser(param),
+  });
 
 const getQuestionsViewUserDate = async (param: {
   user_id: string;
@@ -170,12 +173,14 @@ const getQuestionsViewUserDate = async (param: {
   return http.get(`/questions/view/user/${user_id}/date/${date}`);
 };
 
-export const useQueryQuestionsViewUserDate = (params:{
+export const useQueryQuestionsViewUserDate = (params: {
   user_id: string;
   date: string;
-})=> queryOptions({
-  queryKey:$queryKeys.questionsViewUserDate(params), queryFn: async ()=> getQuestionsViewUserDate(params)
-})
+}) =>
+  queryOptions({
+    queryKey: $queryKeys.questionsViewUserDate(params),
+    queryFn: async () => getQuestionsViewUserDate(params),
+  });
 
 type PostQuestionsRequest = {
   questioned_user_id: number;
@@ -198,7 +203,7 @@ const postQuestions = async (body: PostQuestionsRequest) => {
   return http.post<PostQuestionsRequest, PostQuestionsResponse>(`/questions`, body);
 };
 
-export const usePostQuestions = createMutation({ mutationFn: postQuestions})
+export const usePostQuestions = createMutation({ mutationFn: postQuestions });
 
 // import { http, authHttp } from "~/src/http";
 // import { createMutation } from "@xionwcfm/react-query";
