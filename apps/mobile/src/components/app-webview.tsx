@@ -1,13 +1,15 @@
-import { memo } from "react";
+import { memo, useRef } from "react";
 import { WebView } from "../bridge";
-
-const BASE_URL = !__DEV__ ? "http://127.0.0.1:3000" : "https://cmcteamc.vercel.app";
+import { WebView as WebViewComponent } from "react-native-webview";
+const BASE_URL = __DEV__ ? "http://127.0.0.1:3000" : "https://cmcteamc.vercel.app";
 const DECELERATION_RATE = 0.999;
 const JAVASCRIPT_BEFORE_CONTENTLOADED = `window.__APP_DEV__="${__DEV__ ? "development" : "production"}";`;
 
 export const AppWebview = () => {
+  const ref = useRef<WebViewComponent>(null);
   return (
     <WebView
+      ref={ref}
       source={{ uri: BASE_URL }}
       style={{ flex: 1 }}
       mixedContentMode={"always"}
