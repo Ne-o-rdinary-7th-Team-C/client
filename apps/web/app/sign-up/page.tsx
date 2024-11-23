@@ -1,3 +1,3 @@
 export default function Page() {
-  return <div></div>;
+  return <div className={"h-screen py-[40px] px-[16px] flex-1"}></div>;
 }
