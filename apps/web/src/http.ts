@@ -9,6 +9,9 @@ export const httpInstance = createInstance({
   hooks: {
     beforeRequest: [
       (request) => {
+        if (typeof window === "undefined") {
+          return;
+        }
         const token = localStorage.getItem("@team_cmc_c_auth_state"); // fallback용
         if (token) {
           const parse = JSON.parse(token) as AuthState;
