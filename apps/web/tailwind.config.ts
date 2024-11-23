@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 import { colors } from "./src/colors";
 import { borderRaidus } from "./src/borderRadius";
+import Animate from "tailwindcss-animate";
 
 export default {
   content: [
@@ -19,5 +20,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [Animate],
 } satisfies Config;
