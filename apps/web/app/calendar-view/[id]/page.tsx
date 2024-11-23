@@ -24,13 +24,13 @@ export default function Page() {
       <div className=" h-[40px]" />
       <ErrorBoundary fallback={null}>
         <Suspense>
+          <div className=" h-10" />
+
           <Stack className=" grid grid-cols-3 gap-[16px]">
             <SuspenseQuery {...userQueryQuestions()}>
               {({ data: calendars }) => {
                 return (
                   <Fragment>
-                    <div>{JSON.stringify(calendars.success)}</div>
-                    <div className=" h-40" />
                     {CALENDARS.map((day) => (
                       <AdventCalendarButton key={day} selected={selected === day} onClick={() => setSelected(day)}>
                         {day}
@@ -43,6 +43,7 @@ export default function Page() {
           </Stack>
         </Suspense>
       </ErrorBoundary>
+      <div className=" h-[120px]" />
       <FixedBottom className=" pb-[48px] px-[16px]">
         <Button
           size={"lg"}
