@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import { colors } from "./src/colors";
+import { borderRaidus } from "./src/borderRadius";
 
 export default {
   content: [
@@ -12,6 +13,9 @@ export default {
     extend: {
       colors: {
         ...colors,
+      },
+      borderRadius: {
+        ...borderRaidus,
       },
     },
   },
