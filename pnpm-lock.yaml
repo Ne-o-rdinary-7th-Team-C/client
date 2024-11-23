@@ -239,6 +239,9 @@ importers:
       '@xionwcfm/react':
         specifier: 'catalog:'
         version: 0.1.0(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+      '@xionwcfm/react-query':
+        specifier: ^0.0.8
+        version: 0.0.8(@tanstack/react-query@5.60.5(react@19.0.0-rc-66855b96-20241106))(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       es-toolkit:
         specifier: 'catalog:'
         version: 1.27.0
@@ -2443,6 +2446,13 @@ packages:
 
   '@webview-bridge/web@1.7.2':
     resolution: {integrity: sha512-wr3JnXcf5w9iw9K6Pf6nBWite7qMZmVPm48wHAnG6UgwGP6nj5Ilvk8Rnuv/0V/bTfDXbOWV50niKfJjj5MtwQ==}
+
+  '@xionwcfm/react-query@0.0.8':
+    resolution: {integrity: sha512-8BBH8xoNLA7mkQySIVzJtPyJB6kQuMO+i7SAOl4vqKSqv3QAGbkOyh+IPwsnOmyhTxn86YyvY2BEf2SxiBaXJA==}
+    peerDependencies:
+      '@tanstack/react-query': '>=5'
+      react: '>=18'
+      react-dom: '>=18'
 
   '@xionwcfm/react@0.1.0':
     resolution: {integrity: sha512-V0awbEX9Rgda2Ocu3RjcmYCu8wVqjALjDpZVYUBhIxkCAXI+SiJbOJL6AAm5O746L1ow0VPeWMo85PhcBQQiyw==}
@@ -9214,6 +9224,12 @@ snapshots:
     dependencies:
       '@webview-bridge/types': 1.7.2
       '@webview-bridge/utils': 1.7.2
+
+  '@xionwcfm/react-query@0.0.8(@tanstack/react-query@5.60.5(react@19.0.0-rc-66855b96-20241106))(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      '@tanstack/react-query': 5.60.5(react@19.0.0-rc-66855b96-20241106)
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
 
   '@xionwcfm/react@0.1.0(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
     dependencies:

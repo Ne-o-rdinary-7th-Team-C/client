@@ -17,6 +17,7 @@
     "@suspensive/react": "catalog:",
     "@tanstack/react-query": "catalog:react-query5",
     "@xionwcfm/react": "catalog:",
+    "@xionwcfm/react-query": "^0.0.8",
     "es-toolkit": "catalog:",
     "jotai": "^2.10.3",
     "next": "catalog:",

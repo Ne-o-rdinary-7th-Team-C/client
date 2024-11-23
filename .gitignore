@@ -45,3 +45,5 @@ yarn-error.log*
 apps/web/.turbo/turbo-build.log
 *.turbo
 *.log
+
+.turbo
