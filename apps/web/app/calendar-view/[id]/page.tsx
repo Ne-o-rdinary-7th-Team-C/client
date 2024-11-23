@@ -42,6 +42,7 @@ export default function Page() {
           </Stack>
         </Suspense>
       </ErrorBoundary>
+      <div className=" h-[120px]" />
       <FixedBottom className=" pb-[48px] px-[16px]">
         <Button
           size={"lg"}

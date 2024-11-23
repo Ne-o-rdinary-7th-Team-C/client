@@ -7,7 +7,7 @@ import { Text } from "~/src/shared/ui/text";
 import Image from "next/image";
 export default function First() {
   const router = useRouter();
-
+  //test
   return (
     <div className={"h-screen py-[40px] px-[16px] flex-1"}>
       <div className={"text-center font-bold text-[28px] leading-[38px] my-[30px]"}>

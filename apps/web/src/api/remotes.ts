@@ -159,7 +159,7 @@ type PostQuestionsAnswerResponse = ApiResponse<{
 }>;
 /*** */
 const postQuestionsAnswer = async (param: PostQuestionsAnswerRequest & { question_id: string }) => {
-  return authHttp.post<any, PostQuestionsAnswerResponse>(`${param.question_id}/answer`, param);
+  return authHttp.post<any, PostQuestionsAnswerResponse>(`questions/${param.question_id}/answer`, param);
 };
 
 export const useQuestionsAnswer = createMutation({
