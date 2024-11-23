@@ -6,6 +6,8 @@ import { useLogin } from "~/src/shared/auth";
 import { useUserLogin } from "~/src/api/remotes";
 import { useRouter } from "next/navigation";
 import { $Routes } from "~/src/routes";
+import { ChevronLeftIcon } from "@radix-ui/react-icons";
+
 type Props = {
   onNext: (value: { id: string; password: string }) => void;
   id: string;
@@ -20,7 +22,12 @@ export const Login = () => {
   return (
     <div className="flex flex-col justify-between h-[calc(100vh-80px)]">
       <div>
-        <p className={"font-bold text-[24px] leading-[34px] my-[20px]"}>로그인</p>
+        <div className="flex flex-row gap-1 items-center">
+          <button onClick={() => router.back()} className="w-[25px] h-[25px] flex justify-center">
+            <ChevronLeftIcon className="text-black w-[20px] h-[20px] flex self-center" />
+          </button>
+          <p className={"font-bold text-[24px] leading-[34px] my-[20px]"}>로그인</p>
+        </div>
         <p className={"font-medium text-[16px] leading-[16px] my-[12px]  mt-[65px]"}>아이디</p>
         <Input type="text" value={id} placeholder="10자 이내" onChange={(e) => setId(e.target.value)} />
         <p className={"font-medium text-[16px] leading-[16px] my-[12px] mt-[20px]"}>비밀번호</p>
