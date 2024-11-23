@@ -7,6 +7,6 @@ export default {
 
 export const Default: StoryObj = {
   render: () => {
-    return <QuestionTransition username="홍길동" />;
+    return <QuestionTransition username="홍길동" imageUrl="" />;
   },
 };
