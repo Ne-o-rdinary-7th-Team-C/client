@@ -1,9 +1,7 @@
 "use client";
 
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import { questionDateQueryOptions, userQueryQuestions } from "~/src/api/remotes";
+import { userQueryQuestions } from "~/src/api/remotes";
 import { AdventCalendarButton } from "~/src/features/advent-calendar/Button";
-import { emptyQuestionDialog } from "~/src/features/empty-question-dialog/empty-question-dialog";
 import { socialDrawer } from "~/src/features/social-share/Drawer";
 import { Button } from "~/src/shared/ui/button";
 import { FixedBottom } from "~/src/shared/ui/FixedBottom";
@@ -18,6 +16,7 @@ import { SignedIn, useAuthState } from "~/src/shared/auth";
 export default function Page() {
   const [selected, setSelected] = useState(0);
   const auth = useAuthState();
+
   return (
     <SignedIn>
       <Stack className=" px-[26px] py-6 bg-[#6D0000]  min-h-screen">
@@ -51,7 +50,7 @@ export default function Page() {
             size={"lg"}
             variant={"primary"}
             onClick={() => {
-              socialDrawer.open({ link: `https://cmcteamc.vercel.app/${auth.user_id}` });
+              socialDrawer.open({ link: `https://cmcteamc.vercel.app/calendar-view/${auth.user_id}` });
             }}
           >
             내 캘린더 공유하기
