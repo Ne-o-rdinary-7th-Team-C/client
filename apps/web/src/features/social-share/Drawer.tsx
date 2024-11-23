@@ -4,6 +4,7 @@ import { JustifyBetween } from "~/src/shared/ui/JustifyBetween";
 import { Text } from "~/src/shared/ui/text";
 import Image from "next/image";
 import { Stack } from "~/src/shared/ui/Stack";
+import { overlay } from "overlay-kit";
 
 const SOCIAL_SHARE_LIST = [
   { src: "/icons/instagram.webp", label: "인스타그램" },
@@ -50,4 +51,18 @@ export const SocialDrawer = (props: { isOpen: boolean; onClose: () => void; link
       </Drawer.Portal>
     </Drawer.Root>
   );
+};
+
+export const socialDrawer = {
+  open: (props: { link: string }) =>
+    overlay.open(({ isOpen, close, unmount }) => (
+      <SocialDrawer
+        isOpen={isOpen}
+        onClose={() => {
+          close();
+          setTimeout(unmount, 1000);
+        }}
+        link={props.link}
+      />
+    )),
 };
