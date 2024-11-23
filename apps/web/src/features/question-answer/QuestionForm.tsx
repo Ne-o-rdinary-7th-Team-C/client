@@ -7,6 +7,8 @@ import { Button } from "~/src/shared/ui/button";
 import { FixedBottom } from "~/src/shared/ui/FixedBottom";
 import { usePostQuestions } from "~/src/api/remotes";
 import { useInputState } from "@xionwcfm/react";
+import { ChevronLeftIcon } from "@radix-ui/react-icons";
+import { useRouter } from "next/navigation";
 
 type Props = {
   username: string;
@@ -17,11 +19,13 @@ type Props = {
 export const QuestionForm = (props: Props) => {
   const [nickname, onNicknameChange] = useInputState("");
   const [answer, onAnswerChange] = useInputState("");
+  const router = useRouter();
 
   return (
     <div className="relative w-full h-screen ">
       <Image src={"/backgrounds/question-form.webp"} fill alt="qna" />
-      <div className="relative px-[16px] mb-[20px] mt-[3px]">
+      <div className=" flex flex-row relative px-[16px] mb-[20px] mt-[3px] items-center">
+        <ChevronLeftIcon className={"h-[40px] w-[40px]"} onClick={() => router.back()} />
         <Text variant={"display01"}>{props.date}</Text>
       </div>
       <div
@@ -33,7 +37,7 @@ export const QuestionForm = (props: Props) => {
         <Input placeholder="별명을 적어주세요" className="mb-[20px]" onChange={onNicknameChange} />
 
         <Text variant={"subhead03"} className="text-white" onChange={onAnswerChange}>
-          {props.username}님께 어떤 질문을 하고 싶나요?
+          어떤 질문을 하고 싶나요?
         </Text>
         <Input
           placeholder="최소 10자 이상 입력해주세요."

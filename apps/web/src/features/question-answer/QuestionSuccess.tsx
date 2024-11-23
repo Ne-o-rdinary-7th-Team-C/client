@@ -25,7 +25,7 @@ export const QuestionSuccess = (props: Props) => {
           나만의 어드벤트 캘린더 만들기
         </Button>
         <Button size="lg" variant="outline" onClick={() => router.push("/calendar-view/32")}>
-          {props.questionAuthorName}님의 답변 보러가기
+          답변 보러가기
         </Button>
       </div>
     </div>
