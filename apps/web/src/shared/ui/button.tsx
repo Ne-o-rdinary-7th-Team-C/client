@@ -5,13 +5,14 @@ import { cn } from "./cn";
 const buttonVariants = cva(" duration-200 transition-all active:scale-[0.99]", {
   variants: {
     variant: {
-      primary: "",
-      outline: "",
+      primary: "text-white rouded-small bg-primaryColor2 active:bg-primaryColor1 disabled:bg-disabled",
+      outline:
+        "text-primaryColor2 disabled:text-disabled bg-white active:bg-primaryColor3 rouded-small border-[1px] border-primaryColor2 disabled:border-disabled",
     },
     size: {
-      sm: " w-[124px]",
-      md: "w-[240px] ",
-      lg: "w-full",
+      sm: " w-[124px] h-[48px]",
+      md: "w-[240px] h-[48px]",
+      lg: "w-full h-[48px]",
     },
   },
   defaultVariants: {
@@ -20,14 +21,8 @@ const buttonVariants = cva(" duration-200 transition-all active:scale-[0.99]", {
   },
 });
 
-type Props = ComponentPropsWithoutRef<"button"> &
-  VariantProps<typeof buttonVariants>;
+type Props = ComponentPropsWithoutRef<"button"> & VariantProps<typeof buttonVariants>;
 
 export const Button = ({ variant, size, className, ...props }: Props) => {
-  return (
-    <button
-      className={cn(buttonVariants({ variant, size }), className)}
-      {...props}
-    />
-  );
+  return <button className={cn(buttonVariants({ variant, size }), className)} {...props} />;
 };
