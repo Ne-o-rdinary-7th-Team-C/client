@@ -11,25 +11,35 @@ import { Stack } from "~/src/shared/ui/Stack";
 import { Text } from "~/src/shared/ui/text";
 import { SuspenseQuery } from "@suspensive/react-query";
 import { ErrorBoundary, Suspense } from "@suspensive/react";
+import { CALENDARS } from "~/src/features/advent-calendar/constants";
+import { Fragment, useState } from "react";
 
 export default function Page() {
+  const [selected, setSelected] = useState(0);
+
   return (
-    <Stack className=" px-[26px] py-6 bg-[#DC2244] h-screen">
+    <Stack className=" px-[26px] py-6 bg-[#6D0000]  min-h-screen">
       <ErrorBoundary fallback={null}>
         <Suspense>
           <Text className=" text-gray-50  whitespace-pre-wrap text-[32px] font-bold">{`CMC Team C's \nAdvent calendar`}</Text>
         </Suspense>
       </ErrorBoundary>
-
+      <div className=" h-[40px]" />
       <ErrorBoundary fallback={<ErrorFallback />}>
         <Suspense>
-          <Stack className=" grid grid-cols-3 gap-20">
+          <Stack className=" grid grid-cols-3 gap-[16px]">
             <SuspenseQuery {...userQueryQuestions()}>
-              {({ data: calendars }) =>
-                calendars?.success.map((calendar) => (
-                  <AdventCalendarButton key={calendar.question_id}>{calendar.assigned_date}</AdventCalendarButton>
-                ))
-              }
+              {({ data: calendars }) => {
+                return (
+                  <Fragment>
+                    {CALENDARS.map((day) => (
+                      <AdventCalendarButton key={day} selected={selected === day} onClick={() => setSelected(day)}>
+                        {day}
+                      </AdventCalendarButton>
+                    ))}
+                  </Fragment>
+                );
+              }}
             </SuspenseQuery>
           </Stack>
         </Suspense>
