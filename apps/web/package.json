@@ -18,6 +18,7 @@
     "@tanstack/react-query": "catalog:react-query5",
     "@xionwcfm/react": "catalog:",
     "es-toolkit": "catalog:",
+    "jotai": "^2.10.3",
     "next": "catalog:",
     "overlay-kit": "catalog:",
     "react": "catalog:react19",

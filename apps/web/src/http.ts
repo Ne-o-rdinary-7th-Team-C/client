@@ -1,7 +1,5 @@
 import { createHttp, createInstance } from "@internal/http";
 
-export const http = createHttp();
-
 const httpInstance = createInstance({
   headers: {
     Authorization: `Bearer`,
@@ -9,3 +7,5 @@ const httpInstance = createInstance({
 });
 
 export const authHttp = createHttp(httpInstance);
+
+export const http = createHttp();
