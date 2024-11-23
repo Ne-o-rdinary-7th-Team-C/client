@@ -1,6 +1,7 @@
 import { Providers } from "~/src/providers";
 import type { Metadata } from "next";
 import "./globals.css";
+import { Pretendard } from "~/src/shared/pretendard/Pretendard";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={Pretendard.className}>
         <Providers>{children}</Providers>
       </body>
     </html>
