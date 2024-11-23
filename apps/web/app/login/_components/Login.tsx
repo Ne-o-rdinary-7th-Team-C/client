@@ -2,6 +2,10 @@
 import { useDraft } from "@xionwcfm/react";
 import { Input } from "~/src/shared/ui/input";
 import { Button } from "~/src/shared/ui/button";
+import { useLogin } from "~/src/shared/auth";
+import { useUserLogin } from "~/src/api/remotes";
+import { useRouter } from "next/navigation";
+import { $Routes } from "~/src/routes";
 type Props = {
   onNext: (value: { id: string; password: string }) => void;
   id: string;
@@ -10,7 +14,9 @@ type Props = {
 export const Login = () => {
   const [id, setId] = useDraft("");
   const [password, setPassword] = useDraft("");
-
+  const login = useLogin();
+  const { mutate: requestLogin } = useUserLogin();
+  const router = useRouter();
   return (
     <div className="flex flex-col justify-between h-[calc(100vh-80px)]">
       <div>
@@ -26,7 +32,22 @@ export const Login = () => {
         />
       </div>
       <div className="mt-auto">
-        <Button size="lg">로그인</Button>
+        <Button
+          size="lg"
+          onClick={() => {
+            requestLogin(
+              { login_id: id, password },
+              {
+                onSuccess: (data) => {
+                  login(data.success.token);
+                  router.push($Routes.calendar());
+                },
+              },
+            );
+          }}
+        >
+          로그인
+        </Button>
       </div>
     </div>
   );

@@ -3,20 +3,21 @@ import { createMutation } from "@xionwcfm/react-query";
 import { queryOptions } from "@tanstack/react-query";
 import { ApiResponse } from "../shared/types/api.type";
 
-const getUser = async () => http.get("/user");
+const getUser = async () => authHttp.get("user");
 
 const $queryKeys = {
   user: () => ["user"],
   questions: () => ["questions"],
   questionsByDate: (date: string) => ["questions", date],
   questionsViewUser: (user_id: string) => ["questions", user_id],
-  questionsViewUserDate: (params: {
-    user_id: string;
-    date: string;
-  }) => ["questions", params],
+  questionsViewUserDate: (params: { user_id: string; date: string }) => [
+    "questions",
+    params,
+  ],
 };
 
-export const userQueryOptions = () => queryOptions({ queryKey: $queryKeys.user(), queryFn: getUser });
+export const userQueryOptions = () =>
+  queryOptions({ queryKey: $queryKeys.user(), queryFn: getUser });
 
 type PostUserLoginRequest = {
   login_id: string;
@@ -24,15 +25,26 @@ type PostUserLoginRequest = {
 };
 
 type PostUserLoginResponse = ApiResponse<{
-  access_token: string;
-  refresh_token: string;
+  user_id: number;
+  login_id: string;
+  password: string;
+  color: null | string;
+  nickname: null | string;
+  created_at: string;
+  updated_at: string;
+  token: string;
 }>;
 
-const postUserLogin = async (body: PostUserLoginRequest): Promise<PostUserLoginResponse> => {
-  return http.post<PostUserLoginRequest, PostUserLoginResponse>("/user/login", body);
+const postUserLogin = async (
+  body: PostUserLoginRequest
+): Promise<PostUserLoginResponse> => {
+  return http.post<PostUserLoginRequest, PostUserLoginResponse>(
+    "user/login",
+    body
+  );
 };
 
-// get 요청이 아닌 것은 모두 mutation으로 만듭니다.
+// 안됩니다.
 export const useUserLogin = createMutation({ mutationFn: postUserLogin });
 
 type PostUserValidationRequest = {
@@ -43,14 +55,22 @@ type PostUserValidationResponse = ApiResponse<{
   login_id: string;
 }>;
 
-const postUserValidation = async (body: PostUserValidationRequest): Promise<PostUserValidationResponse> => {
-  return http.post<PostUserValidationRequest, PostUserValidationResponse>("/user/validation", body);
+const postUserValidation = async (
+  body: PostUserValidationRequest
+): Promise<PostUserValidationResponse> => {
+  return http.post<PostUserValidationRequest, PostUserValidationResponse>(
+    "user/validation",
+    body
+  );
 };
 
-export const useUserValidation = createMutation({ mutationFn: postUserValidation });
+//안됩니다.
+export const useUserValidation = createMutation({
+  mutationFn: postUserValidation,
+});
 
 type PostUserRegisterRequest = {
-  login_id: string;
+  loginId: string;
   password: string;
 };
 
@@ -61,12 +81,19 @@ type PostUserRegisterResponse = ApiResponse<{
   nickname: null;
   created_at: string;
   updated_at: string;
+  token: string;
 }>;
 
-const postUserRegister = async (body: PostUserRegisterRequest): Promise<PostUserRegisterResponse> => {
-  return http.post<PostUserRegisterRequest, PostUserRegisterResponse>("/user/register", body);
+export const postUserRegister = async (
+  body: PostUserRegisterRequest
+): Promise<PostUserRegisterResponse> => {
+  return http.post<PostUserRegisterRequest, PostUserRegisterResponse>(
+    "user/register",
+    body
+  );
 };
 
+//안됩니다.
 export const useUserRegister = createMutation({ mutationFn: postUserRegister });
 
 type PatchUserRegisterRequest = {
@@ -83,11 +110,19 @@ type PatchUserRegisterResponse = ApiResponse<{
   updated_at: string;
 }>;
 
-const patchUserRegister = async (body: PatchUserRegisterRequest): Promise<PatchUserRegisterResponse> => {
-  return http.patch<PatchUserRegisterRequest, PatchUserRegisterResponse>("/user/register", body);
+export const patchUserRegister = async (
+  body: PatchUserRegisterRequest
+): Promise<PatchUserRegisterResponse> => {
+  return authHttp.patch<PatchUserRegisterRequest, PatchUserRegisterResponse>(
+    "user/register",
+    body
+  );
 };
 
-export const usePatchUserRegister = createMutation({ mutationFn: patchUserRegister });
+//안됩니다.
+export const usePatchUserRegister = createMutation({
+  mutationFn: patchUserRegister,
+});
 
 type GetQuestionsResponse = {
   question_id: number;
@@ -98,18 +133,18 @@ type GetQuestionsResponse = {
   created_at: string;
   updated_at: string;
 }[];
-//**** */
+
 const getQuestions = async () => {
-  return http.get<GetQuestionsResponse>("/questions");
+  return authHttp.get<GetQuestionsResponse>("/questions");
 };
 
-export const userQueryQuestions = () => queryOptions({ queryKey: $queryKeys.questions(), queryFn: getQuestions });
+export const userQueryQuestions = () =>
+  queryOptions({ queryKey: $queryKeys.questions(), queryFn: getQuestions });
 
 type GetQuestionsDateRequest = {
   date: string;
 };
 
-//***** */
 type GetQuestionsDateResponse = ApiResponse<
   {
     question_id: number;
@@ -123,10 +158,10 @@ type GetQuestionsDateResponse = ApiResponse<
 >;
 
 const getQuestionsDate = async (param: GetQuestionsDateRequest) => {
-  return http.get<GetQuestionsDateResponse>(`/questions/${param.date}`);
+  return authHttp.get<GetQuestionsDateResponse>(`questions/${param.date}`);
 };
 
-// get 요청인데 파람을 받아야하는 경우 이렇게 작성합니다
+//
 export const questionDateQueryOptions = (param: GetQuestionsDateRequest) =>
   queryOptions({
     queryKey: $queryKeys.questionsByDate(param.date),
@@ -146,17 +181,26 @@ type PostQuestionsAnswerResponse = ApiResponse<{
   content: string;
 }>;
 /*** */
-const postQuestionsAnswer = async (param: PostQuestionsAnswerRequest & { question_id: string }) => {
-  return http.post<any, PostQuestionsAnswerResponse>(`/${param.question_id}/answer`, param);
+const postQuestionsAnswer = async (
+  param: PostQuestionsAnswerRequest & { question_id: string }
+) => {
+  return authHttp.post<any, PostQuestionsAnswerResponse>(
+    `${param.question_id}/answer`,
+    param
+  );
 };
 
-export const useQuestionsAnswer = createMutation({ mutationFn: postQuestionsAnswer });
+export const useQuestionsAnswer = createMutation({
+  mutationFn: postQuestionsAnswer,
+});
 
 /*** */
 type GetQuestionsViewUserResponse = ApiResponse<number[]>;
 
 const getQuestionsViewUser = async (param: { user_id: string }) => {
-  return http.get<GetQuestionsViewUserResponse>(`/questions/view/user/${param.user_id}`);
+  return http.get<GetQuestionsViewUserResponse>(
+    `questions/view/user/${param.user_id}`
+  );
 };
 
 export const userQueryQuestionsViewUser = (param: { user_id: string }) =>
@@ -170,7 +214,7 @@ const getQuestionsViewUserDate = async (param: {
   date: string;
 }) => {
   const { user_id, date } = param;
-  return http.get(`/questions/view/user/${user_id}/date/${date}`);
+  return http.get(`questions/view/user/${user_id}/date/${date}`);
 };
 
 export const useQueryQuestionsViewUserDate = (params: {
@@ -200,7 +244,10 @@ type PostQuestionsResponse = ApiResponse<{
 }>;
 
 const postQuestions = async (body: PostQuestionsRequest) => {
-  return http.post<PostQuestionsRequest, PostQuestionsResponse>(`/questions`, body);
+  return http.post<PostQuestionsRequest, PostQuestionsResponse>(
+    `questions`,
+    body
+  );
 };
 
 export const usePostQuestions = createMutation({ mutationFn: postQuestions });

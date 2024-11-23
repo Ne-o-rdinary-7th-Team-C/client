@@ -2,8 +2,10 @@
 import { DefaultProps, DefaultPropsProvider, ErrorBoundary, Suspense } from "@suspensive/react";
 import { QueryClient, QueryClientProvider, QueryErrorResetBoundary } from "@tanstack/react-query";
 import { OverlayProvider } from "overlay-kit";
-import { PropsWithChildren, useState } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import { Toaster } from "sonner";
+import { useAuthState } from "./shared/auth";
+import { httpInstance } from "./http";
 
 export const Providers = ({ children }: PropsWithChildren) => {
   const [defaultProps] = useState(() => new DefaultProps({ Delay: { ms: 200 } }));
