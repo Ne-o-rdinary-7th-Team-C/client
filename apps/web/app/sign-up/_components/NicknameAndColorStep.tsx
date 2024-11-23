@@ -12,7 +12,7 @@ export const NickNameStep = (props: Props) => {
   const [color, setColor] = useDraft(props.color);
 
   return (
-    <div className="flex flex-col justify-between h-screen">
+    <div className="flex flex-col justify-between h-[calc(100vh-80px)]">
       <div>
         <p className={"font-bold text-[24px] leading-[34px] my-[20px]"}>별명</p>
         <Input
@@ -29,7 +29,7 @@ export const NickNameStep = (props: Props) => {
           <div className="w-48 aspect-square bg-line rounded-medium flex-grow-0 mr-[36px]" />
         </div>
       </div>
-      <div className="mt-auto mb-[48px]">
+      <div className="mt-auto">
         <Button size="lg" onClick={() => onNext({ nickname, color })}>
           캘린더 생성하기
         </Button>
