@@ -20,12 +20,11 @@ export default function Page() {
 
   return (
     <Stack className=" px-[26px] py-6 bg-[#6D0000] min-h-screen">
-      <Text className=" text-gray-50  whitespace-pre-wrap text-[32px] font-bold">{`aiaiaiaiai's \nAdvent calendar`}</Text>
+      <Text className=" text-gray-50  whitespace-pre-wrap text-[32px] font-bold">{`Advent calendar`}</Text>
       <div className=" h-[40px]" />
       <ErrorBoundary fallback={null}>
         <Suspense>
-          <div className=" h-10" />
-
+          <div className=" h-40" />
           <Stack className=" grid grid-cols-3 gap-[16px]">
             <SuspenseQuery {...userQueryQuestions()}>
               {({ data: calendars }) => {
