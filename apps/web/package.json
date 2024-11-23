@@ -16,6 +16,7 @@
     "@internal/bridge-web": "workspace:*",
     "@internal/http": "workspace:*",
     "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-icons": "^1.3.2",
     "@suspensive/react": "catalog:",
     "@tanstack/react-query": "catalog:react-query5",
     "@xionwcfm/react": "catalog:",

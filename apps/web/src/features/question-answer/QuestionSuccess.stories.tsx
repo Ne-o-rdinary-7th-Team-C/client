@@ -10,7 +10,7 @@ export const Default: StoryObj = {
   render: () => {
     return (
       <GlobalLayout>
-        <QuestionSuccess />
+        <QuestionSuccess questionAuthorName="홍길동" />
       </GlobalLayout>
     );
   },

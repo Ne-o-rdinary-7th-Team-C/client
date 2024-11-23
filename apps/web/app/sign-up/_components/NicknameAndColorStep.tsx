@@ -1,15 +1,17 @@
 import { useDraft } from "@xionwcfm/react";
 import { Input } from "~/src/shared/ui/input";
 import { Button } from "~/src/shared/ui/button";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { usePatchUserRegister, userQueryOptions } from "~/src/api/remotes";
 type Props = {
-  nickname: string;
-  color: string;
-  onNext: (value: { nickname: string; color: string }) => void;
+  onNext: () => void;
 };
 export const NickNameStep = (props: Props) => {
   const { onNext } = props;
-  const [nickname, setNickname] = useDraft(props.nickname);
-  const [color, setColor] = useDraft(props.color);
+
+  const [nickname, setNickname] = useDraft("");
+  const [color, setColor] = useDraft("");
+  const { mutate: updateUser } = usePatchUserRegister();
 
   return (
     <div className="flex flex-col justify-between h-[calc(100vh-80px)]">
@@ -29,8 +31,15 @@ export const NickNameStep = (props: Props) => {
           <div className="w-48 aspect-square bg-line rounded-medium flex-grow-0 mr-[36px]" />
         </div>
       </div>
+
       <div className="mt-auto">
-        <Button size="lg" onClick={() => onNext({ nickname, color })}>
+        <Button
+          size="lg"
+          onClick={() => {
+            updateUser({ nickname, color });
+            onNext();
+          }}
+        >
           캘린더 생성하기
         </Button>
       </div>
