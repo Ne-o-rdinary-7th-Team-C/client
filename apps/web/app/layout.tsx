@@ -2,6 +2,8 @@ import { Providers } from "~/src/providers";
 import type { Metadata } from "next";
 import "./globals.css";
 import { Pretendard } from "~/src/shared/fonts/pretendard/Pretendard";
+import { GlobalLayout } from "~/src/shared/ui/GlobalLayout";
+import { cn } from "~/src/shared/ui/cn";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={Pretendard.className}>
-        <Providers>{children}</Providers>
+      <body className={cn(Pretendard.className, " bg-gray-50")}>
+        <GlobalLayout>
+          <Providers>{children}</Providers>
+        </GlobalLayout>
       </body>
     </html>
   );
