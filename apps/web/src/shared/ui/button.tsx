@@ -10,7 +10,7 @@ const buttonVariants = cva(" duration-200 transition-all active:scale-[0.99]", {
         "text-subhead03 text-primaryColor2 disabled:text-disabled bg-white active:bg-primaryColor3 rouded-small border-[1px] border-primaryColor2 disabled:border-disabled",
     },
     size: {
-      sm: " w-[124px] h-[48px]",
+      sm: "w-[124px] h-[48px]",
       md: "w-[240px] h-[48px]",
       lg: "w-full h-[48px]",
     },
