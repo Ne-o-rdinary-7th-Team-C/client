@@ -13,19 +13,9 @@ const inputVarinats = cva(" transition-all duration-200", {
   },
 });
 
-type Props = ComponentPropsWithoutRef<"input"> &
-  VariantProps<typeof inputVarinats>;
+type Props = ComponentPropsWithoutRef<"input"> & VariantProps<typeof inputVarinats>;
 
-export const Input = forwardRef(function Input(
-  props: Props,
-  ref: Ref<HTMLInputElement>
-) {
+export const Input = forwardRef(function Input(props: Props, ref: Ref<HTMLInputElement>) {
   const { className, variant, ...rest } = props;
-  return (
-    <input
-      ref={ref}
-      className={cn(inputVarinats({ variant }), className)}
-      {...rest}
-    />
-  );
+  return <input ref={ref} className={cn(inputVarinats({ variant }), className)} {...rest} />;
 });

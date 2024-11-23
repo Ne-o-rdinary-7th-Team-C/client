@@ -22,9 +22,17 @@ commit-msg:
           exit 1
         }
 
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      run: pnpm run format:biome
+
 pre-push:
   parallel: true
   commands:
+    format:
+      run: pnpm run format:biome
     branch-protection:
       run: |
         branch=$(git rev-parse --abbrev-ref HEAD)

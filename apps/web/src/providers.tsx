@@ -1,22 +1,11 @@
 "use client";
-import {
-  DefaultProps,
-  DefaultPropsProvider,
-  ErrorBoundary,
-  Suspense,
-} from "@suspensive/react";
-import {
-  QueryClient,
-  QueryClientProvider,
-  QueryErrorResetBoundary,
-} from "@tanstack/react-query";
+import { DefaultProps, DefaultPropsProvider, ErrorBoundary, Suspense } from "@suspensive/react";
+import { QueryClient, QueryClientProvider, QueryErrorResetBoundary } from "@tanstack/react-query";
 import { OverlayProvider } from "overlay-kit";
 import { PropsWithChildren, useState } from "react";
 
 export const Providers = ({ children }: PropsWithChildren) => {
-  const [defaultProps] = useState(
-    () => new DefaultProps({ Delay: { ms: 200 } })
-  );
+  const [defaultProps] = useState(() => new DefaultProps({ Delay: { ms: 200 } }));
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -28,7 +17,7 @@ export const Providers = ({ children }: PropsWithChildren) => {
             retry: 3,
           },
         },
-      })
+      }),
   );
   return (
     <QueryClientProvider client={queryClient}>

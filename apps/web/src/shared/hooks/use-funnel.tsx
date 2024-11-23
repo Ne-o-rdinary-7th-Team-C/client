@@ -6,42 +6,31 @@ export type NonEmptyArray<T> = readonly [T, ...T[]];
 export interface FunnelProps<Steps extends NonEmptyArray<string>> {
   steps: Steps;
   step: Steps[number];
-  children:
-    | Array<React.ReactElement<StepProps<Steps>>>
-    | React.ReactElement<StepProps<Steps>>;
+  children: Array<React.ReactElement<StepProps<Steps>>> | React.ReactElement<StepProps<Steps>>;
 }
 export interface StepProps<Steps extends NonEmptyArray<string>> {
   name: Steps[number];
   onEnter?: () => void;
   children: React.ReactNode;
 }
-export type RouteFunnelProps<Steps extends NonEmptyArray<string>> = Omit<
-  FunnelProps<Steps>,
-  "steps" | "step"
->;
+export type RouteFunnelProps<Steps extends NonEmptyArray<string>> = Omit<FunnelProps<Steps>, "steps" | "step">;
 
 export type StepChildElementProps = {
   // biome-ignore lint/suspicious/noConfusingVoidType: <explanation>
   goNextStep: () => Promise<boolean> | void;
   routerBack: () => void;
 };
-export const Funnel = <Steps extends NonEmptyArray<string>>({
-  step,
-  steps,
-  children,
-}: FunnelProps<Steps>) => {
+export const Funnel = <Steps extends NonEmptyArray<string>>({ step, steps, children }: FunnelProps<Steps>) => {
   const validChildren = Children.toArray(children)
     .filter(isValidElement)
-    .filter((item) =>
-      steps.includes((item.props as Partial<StepProps<Steps>>).name ?? "")
-    ) as Array<React.ReactElement<StepProps<Steps>>>;
+    .filter((item) => steps.includes((item.props as Partial<StepProps<Steps>>).name ?? "")) as Array<
+    React.ReactElement<StepProps<Steps>>
+  >;
   const targetStep = validChildren.find((child) => child.props.name === step);
   return <>{targetStep}</>;
 };
 
-export const Step = <Steps extends NonEmptyArray<string>>({
-  children,
-}: StepProps<Steps>) => {
+export const Step = <Steps extends NonEmptyArray<string>>({ children }: StepProps<Steps>) => {
   return <>{children}</>;
 };
 
@@ -49,14 +38,12 @@ export const useFunnel = <Steps extends NonEmptyArray<string>>(
   array: Steps,
   option?: {
     initialStep: Steps[number];
-  }
+  },
 ) => {
   const [steps] = React.useState<Steps>(array);
   const [currentStep, setCurrentStep] = React.useState<Steps[number]>(array[0]);
 
-  const [nextStepOption, setNextStepOption] = React.useState<
-    "push" | "replace"
-  >("push");
+  const [nextStepOption, setNextStepOption] = React.useState<"push" | "replace">("push");
   const router = useRouter();
   const pathName = usePathname();
 
@@ -64,15 +51,10 @@ export const useFunnel = <Steps extends NonEmptyArray<string>>(
   const queryStep = searchParams.get("step");
   const queryFrom = searchParams.get("from");
 
-  const nextStep = (
-    nextQuery?: Steps[number],
-    config?: { option?: "push" | "replace" }
-  ) => {
+  const nextStep = (nextQuery?: Steps[number], config?: { option?: "push" | "replace" }) => {
     if (!queryStep) return;
 
-    const nextStep = nextQuery
-      ? nextQuery
-      : steps[steps.indexOf(queryStep) + 1];
+    const nextStep = nextQuery ? nextQuery : steps[steps.indexOf(queryStep) + 1];
 
     if (config?.option === "replace") {
       setNextStepOption("replace");
@@ -82,14 +64,10 @@ export const useFunnel = <Steps extends NonEmptyArray<string>>(
 
   React.useEffect(() => {
     if (nextStepOption === "replace") {
-      router.replace(
-        `${pathName}?step=${currentStep}${queryFrom ? `&from=${queryFrom}` : ""}`
-      );
+      router.replace(`${pathName}?step=${currentStep}${queryFrom ? `&from=${queryFrom}` : ""}`);
       setNextStepOption("push");
     } else {
-      router.push(
-        `${pathName}?step=${currentStep}${queryFrom ? `&from=${queryFrom}` : ""}`
-      );
+      router.push(`${pathName}?step=${currentStep}${queryFrom ? `&from=${queryFrom}` : ""}`);
     }
   }, [currentStep]);
 
@@ -131,7 +109,7 @@ export const useFunnel = <Steps extends NonEmptyArray<string>>(
         Step: (props: StepProps<Steps>) => {
           return <Step {...props} />;
         },
-      }
+      },
     );
   }, [currentStep, steps]);
   return [FunnelComponent, nextStep] as const;
