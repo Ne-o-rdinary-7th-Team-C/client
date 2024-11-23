@@ -2,16 +2,27 @@ import { ComponentPropsWithoutRef, forwardRef, Ref } from "react";
 import { cn } from "./cn";
 import { cva, VariantProps } from "class-variance-authority";
 
-// focus: << 인풋에 포커싱이 가있을 때 스타일
-// disabled: << 인풋이 비활성화 되었을 때 스타일
-// 그냥 << 평소 스타일
-const inputVarinats = cva(" transition-all duration-200", {
-  variants: {
-    variant: {
-      outline: "",
+const inputVarinats = cva(
+  "w-[288px] h-[48px] px-[16px] py-[13px] items-center gap-[10px] text-[16px] rounded-small transition-all duration-200",
+  {
+    variants: {
+      variant: {
+        outline: `
+          border-line
+          focus:border-black
+          disabled:border-none
+
+          placeholder:text-midEmphasis
+          text-black
+          disabled:text-midEmphasis
+
+          bg-white
+          disabled:bg-disabled
+        `,
+      },
     },
   },
-});
+);
 
 type Props = ComponentPropsWithoutRef<"input"> & VariantProps<typeof inputVarinats>;
 
