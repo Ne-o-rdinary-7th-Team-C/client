@@ -2,6 +2,9 @@ import Image from "next/image";
 import { Button } from "~/src/shared/ui/button";
 import { FixedBottom } from "~/src/shared/ui/FixedBottom";
 import { Text } from "~/src/shared/ui/text";
+import { ChevronLeftIcon } from "@radix-ui/react-icons";
+import { useRouter } from "next/navigation";
+
 type Props = {
   onSecondaryClick?: () => void;
   onPrimaryClick?: (answer: string) => void;
@@ -11,6 +14,8 @@ type Props = {
 };
 
 export const QuestionAnswer = (props: Props) => {
+  const router = useRouter();
+
   return (
     <div className="relative w-full h-screen bg-gray-100 px-[16px] py-[40px] overflow-hidden">
       <Image
@@ -26,7 +31,10 @@ export const QuestionAnswer = (props: Props) => {
           {/* 상단 날짜 및 질문 */}
           <div className="mt-6">
             <div className="flex flex-row gap-[8px]">
-              <div className="w-[25px] flex self-center">◁</div>
+              <button onClick={() => router.back()} className="w-[25px] h-[25px] flex justify-center items-center">
+                <ChevronLeftIcon className="text-black w-[20px] h-[20px]" />
+              </button>
+
               <Text variant="display01">12월 {props.targetDate}</Text>
             </div>
             <div className="mt-[24px]">

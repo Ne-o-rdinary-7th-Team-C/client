@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { Text } from "~/src/shared/ui/text";
+import { ChevronLeftIcon } from "@radix-ui/react-icons";
+import { useRouter } from "next/navigation";
 
 type Props = {
   backgroundImageUrl: string;
@@ -10,6 +12,8 @@ type Props = {
 };
 
 export const QuestionAnswerView = (props: Props) => {
+  const router = useRouter();
+
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* 배경 이미지 */}
@@ -23,7 +27,9 @@ export const QuestionAnswerView = (props: Props) => {
       {/* 콘텐츠 */}
       <div className="relative z-10 flex flex-col px-[16px] py-[40px]">
         <div className="flex flex-row mb-[18px]">
-          <div className="w-[25px] flex self-center">◁</div>
+          <button onClick={() => router.back()} className="w-[25px] h-[25px] flex justify-center items-center">
+            <ChevronLeftIcon className="text-black w-[20px] h-[20px]" />
+          </button>
           <Text variant={"display01"}>12월 2일</Text>
         </div>
 
