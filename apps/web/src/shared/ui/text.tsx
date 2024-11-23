@@ -1,5 +1,6 @@
 import { ComponentPropsWithoutRef } from "react";
 import { cva, VariantProps } from "class-variance-authority";
+import { cn } from "./cn";
 
 const fontVariants = cva("", {
   variants: {
@@ -24,6 +25,6 @@ const fontVariants = cva("", {
 });
 
 type Props = ComponentPropsWithoutRef<"span"> & VariantProps<typeof fontVariants>;
-export const Text = ({ variant, ...props }: Props) => {
-  return <span className={fontVariants({ variant })} {...props} />;
+export const Text = ({ variant, className, ...props }: Props) => {
+  return <span className={cn(fontVariants({ variant }), className)} {...props} />;
 };

@@ -45,7 +45,8 @@ const Content = forwardRef<
       className={cn("flex h-auto flex-col rounded-t-[10px] border bg-white ", className)}
       {...props}
     >
-      <Handle className=" top-[16px] mb-8 h-6 w-[80px] rounded-full bg-gray-200" />
+      <Handle className=" top-[8px] w-[40px] rounded-full bg-gray-400" />
+      <div className=" h-[28px]" />
 
       {children}
     </DrawerPrimitive.Content>
