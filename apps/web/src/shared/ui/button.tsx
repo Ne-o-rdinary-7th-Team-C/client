@@ -5,9 +5,9 @@ import { cn } from "./cn";
 const buttonVariants = cva(" duration-200 transition-all active:scale-[0.99]", {
   variants: {
     variant: {
-      primary: "text-white rouded-small bg-primaryColor2 active:bg-primaryColor1 disabled:bg-disabled",
+      primary: "text-subhead03 text-white rounded-small bg-primaryColor2 active:bg-primaryColor1 disabled:bg-disabled",
       outline:
-        "text-primaryColor2 disabled:text-disabled bg-white active:bg-primaryColor3 rouded-small border-[1px] border-primaryColor2 disabled:border-disabled",
+        "text-subhead03 text-primaryColor2 disabled:text-disabled bg-white active:bg-primaryColor3 rouded-small border-[1px] border-primaryColor2 disabled:border-disabled",
     },
     size: {
       sm: " w-[124px] h-[48px]",
@@ -23,6 +23,10 @@ const buttonVariants = cva(" duration-200 transition-all active:scale-[0.99]", {
 
 type Props = ComponentPropsWithoutRef<"button"> & VariantProps<typeof buttonVariants>;
 
-export const Button = ({ variant, size, className, ...props }: Props) => {
-  return <button className={cn(buttonVariants({ variant, size }), className)} {...props} />;
+export const Button = ({ variant, size, className, children, ...props }: Props) => {
+  return (
+    <button className={cn(buttonVariants({ variant, size }), className)} {...props}>
+      {children}
+    </button>
+  );
 };
