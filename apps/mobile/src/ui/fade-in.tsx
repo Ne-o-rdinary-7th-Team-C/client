@@ -17,7 +17,5 @@ export const FadeIn = (props: FadeInProps) => {
     }).start();
   }, [fadeAnim]);
 
-  return (
-    <Animated.View style={{ opacity: fadeAnim }}>{children}</Animated.View>
-  );
+  return <Animated.View style={{ opacity: fadeAnim }}>{children}</Animated.View>;
 };

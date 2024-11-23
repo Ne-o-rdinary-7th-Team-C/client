@@ -3,9 +3,7 @@ import * as MediaLibrary from "expo-media-library";
 import { Alert, Linking } from "react-native";
 import { type DownloadImageReturn } from "@internal/bridge";
 
-export const downloadImage = async (
-  url: string
-): Promise<DownloadImageReturn> => {
+export const downloadImage = async (url: string): Promise<DownloadImageReturn> => {
   try {
     const imagePermission = await MediaLibrary.getPermissionsAsync();
 
@@ -30,7 +28,7 @@ export const downloadImage = async (
 
     const downloadResumable = await FileSystem.downloadAsync(
       url,
-      `${FileSystem.cacheDirectory}image_${new Date().getTime()}.jpg`
+      `${FileSystem.cacheDirectory}image_${new Date().getTime()}.jpg`,
     );
     if (downloadResumable.status === 200) {
       await MediaLibrary.saveToLibraryAsync(downloadResumable.uri);

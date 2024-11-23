@@ -39,11 +39,9 @@ export function useNotificationObserver() {
       redirect(response?.notification);
     });
 
-    const subscription = Notifications.addNotificationResponseReceivedListener(
-      (response) => {
-        redirect(response.notification);
-      }
-    );
+    const subscription = Notifications.addNotificationResponseReceivedListener((response) => {
+      redirect(response.notification);
+    });
 
     return () => {
       isMounted = false;

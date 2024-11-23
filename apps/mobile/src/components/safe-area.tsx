@@ -11,12 +11,7 @@ class SafeAreaObservable extends Observable<SafeAreaEdges[]> {
   }
 }
 
-const safeAreaObservable = new SafeAreaObservable([
-  "bottom",
-  "left",
-  "right",
-  "top",
-]);
+const safeAreaObservable = new SafeAreaObservable(["bottom", "left", "right", "top"]);
 
 export const SafeArea = ({ children }: PropsWithChildren) => {
   const [safeAreaState, setSafeAreaState] = useState(() => {
