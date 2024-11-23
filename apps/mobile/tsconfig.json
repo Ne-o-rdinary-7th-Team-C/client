@@ -2,8 +2,10 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@internal/bridge": ["./node_modules/@internal/bridge/src/index.ts"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
