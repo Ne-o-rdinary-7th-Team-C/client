@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { PropsWithChildren, useState } from "react";
 import { useFunnel } from "~/src/shared/hooks/use-funnel";
 import { IdAndPasswordStep } from "./_components/IdAndPasswordStep";
 import { NickNameStep } from "./_components/NicknameAndColorStep";
+import { Stack } from "~/src/shared/ui/Stack";
 
 export default function Page() {
   const [Funnel, onNext] = useFunnel(["password", "nickname"] as const);
@@ -16,11 +17,19 @@ export default function Page() {
   return (
     <Funnel>
       <Funnel.Step name={"password"}>
-        <IdAndPasswordStep onNext={() => onNext("nickname")} id={state.id} password={state.password} />
+        <PaddingLayout>
+          <IdAndPasswordStep onNext={() => onNext("nickname")} id={state.id} password={state.password} />
+        </PaddingLayout>
       </Funnel.Step>
       <Funnel.Step name={"nickname"}>
-        <NickNameStep onNext={() => {}} nickname={state.nickname} color={state.color} />
+        <PaddingLayout>
+          <NickNameStep onNext={() => {}} nickname={state.nickname} color={state.color} />
+        </PaddingLayout>
       </Funnel.Step>
     </Funnel>
   );
 }
+
+const PaddingLayout = (props: PropsWithChildren) => {
+  return <Stack className=" px-[16px]">{props.children}</Stack>;
+};
