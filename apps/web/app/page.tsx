@@ -1,11 +1,19 @@
 "use client";
 import * as Drawer from "~/src/shared/ui/drawer";
 import * as Dialog from "~/src/shared/ui/Dialog";
+import { toast, Toaster } from "sonner";
 
 export default function Home() {
   return (
     <div>
       dsadas
+      <button
+        onClick={() => {
+          toast.success("hello");
+        }}
+      >
+        클릭
+      </button>
       <Dialog.Root>
         <Dialog.Trigger>Open</Dialog.Trigger>
         <Dialog.Portal>
