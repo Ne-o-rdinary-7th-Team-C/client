@@ -23,8 +23,7 @@ const fontVariants = cva("", {
   },
 });
 
-type Props = ComponentPropsWithoutRef<"span"> &
-  VariantProps<typeof fontVariants>;
+type Props = ComponentPropsWithoutRef<"span"> & VariantProps<typeof fontVariants>;
 export const Text = ({ variant, ...props }: Props) => {
   return <span className={fontVariants({ variant })} {...props} />;
 };

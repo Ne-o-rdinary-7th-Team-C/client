@@ -20,14 +20,8 @@ const buttonVariants = cva(" duration-200 transition-all active:scale-[0.99]", {
   },
 });
 
-type Props = ComponentPropsWithoutRef<"button"> &
-  VariantProps<typeof buttonVariants>;
+type Props = ComponentPropsWithoutRef<"button"> & VariantProps<typeof buttonVariants>;
 
 export const Button = ({ variant, size, className, ...props }: Props) => {
-  return (
-    <button
-      className={cn(buttonVariants({ variant, size }), className)}
-      {...props}
-    />
-  );
+  return <button className={cn(buttonVariants({ variant, size }), className)} {...props} />;
 };

@@ -23,7 +23,7 @@ export const Overlay = forwardRef<
         data-[state=closed]:animate-out data-[state=closed]:fade-out-0  
         fixed inset-0 backdrop-blur  bg-[rgba(0,0,0,0.4)]
         `,
-        className
+        className,
       )}
     />
   );
