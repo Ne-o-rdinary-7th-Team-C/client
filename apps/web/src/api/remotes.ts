@@ -89,7 +89,7 @@ const patchUserRegister = async (body: PatchUserRegisterRequest): Promise<PatchU
   return authHttp.patch<PatchUserRegisterRequest, PatchUserRegisterResponse>("user/register", body);
 };
 
-//안됩니다. 
+//안됩니다.
 export const usePatchUserRegister = createMutation({ mutationFn: patchUserRegister });
 
 type GetQuestionsResponse = {
@@ -112,7 +112,6 @@ type GetQuestionsDateRequest = {
   date: string;
 };
 
-
 type GetQuestionsDateResponse = ApiResponse<
   {
     question_id: number;
@@ -129,7 +128,7 @@ const getQuestionsDate = async (param: GetQuestionsDateRequest) => {
   return authHttp.get<GetQuestionsDateResponse>(`questions/${param.date}`);
 };
 
-// 
+//
 export const questionDateQueryOptions = (param: GetQuestionsDateRequest) =>
   queryOptions({
     queryKey: $queryKeys.questionsByDate(param.date),
