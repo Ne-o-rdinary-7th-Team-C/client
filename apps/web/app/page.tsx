@@ -3,17 +3,22 @@ import { useRouter } from "next/navigation";
 import { $Routes } from "~/src/routes";
 import { Button } from "~/src/shared/ui/button";
 import { FixedBottom } from "~/src/shared/ui/FixedBottom";
-
+import { Text } from "~/src/shared/ui/text";
+import Image from "next/image";
 export default function First() {
   const router = useRouter();
 
   return (
     <div className={"h-screen py-[40px] px-[16px] flex-1"}>
-      <div className={"text-center font-bold text-[28px] leading-[38px] my-[20px]"}>
-        <div>나만의 어드벤트</div>
-        <div>캘린더 만들기</div>
+      <div className={"text-center font-bold text-[28px] leading-[38px] my-[30px]"}>
+        <Text variant="display02" className="text-primaryColor2">
+          나만의 어드벤트
+          <br /> 캘린더 만들기
+        </Text>
       </div>
-      <div className={"mx-auto bg-gray-500 h-[153px] w-[153px]  mt-[8px] mb-[52px] rounded-medium"}></div>
+      <div className="flex justify-center">
+        <Image src={"/first.webp"} alt="start" width={245} height={180} />
+      </div>
       <FixedBottom className={"pb-[48px] px-[16px]"}>
         <Button variant="primary" size="lg" onClick={() => router.push($Routes.signUp())}>
           시작하기
