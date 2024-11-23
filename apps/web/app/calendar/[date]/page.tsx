@@ -1,7 +1,9 @@
 "use client";
 
+import { useQuery } from "@tanstack/react-query";
 import { useParams, useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { userQueryOptions } from "~/src/api/remotes";
 import { QuestionAnswer } from "~/src/features/question-answer/QuestionAnswer";
 import { useAuthState } from "~/src/shared/auth";
 import { Stack } from "~/src/shared/ui/Stack";

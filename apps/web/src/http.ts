@@ -4,8 +4,14 @@ import { AuthState } from "./shared/auth";
 export const httpInstance = createInstance({
   headers: {
     Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3MzUwODQ4MDB9.cmLnN3Qu2GmO0Bvh1Xbc_7rvL5v1L6f9A38ybrW84BA`,
+    "Content-Type": "application/json",
+    Accept: "*/*",
   },
-  prefixUrl: "https://test2.shop",
+
+  prefixUrl: "https://umc.skyofseoul.synology.me",
+
+  credentials: "include",
+
   hooks: {
     beforeRequest: [
       (request) => {
@@ -25,5 +31,7 @@ export const httpInstance = createInstance({
 export const authHttp = createHttp(httpInstance);
 
 export const http = createHttp({
-  prefixUrl: "https://test2.shop",
+
+  prefixUrl: "https://umc.skyofseoul.synology.me",
+
 });

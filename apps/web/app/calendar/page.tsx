@@ -13,50 +13,52 @@ import { SuspenseQuery } from "@suspensive/react-query";
 import { ErrorBoundary, Suspense } from "@suspensive/react";
 import { CALENDARS } from "~/src/features/advent-calendar/constants";
 import { Fragment, useState } from "react";
-import { useAuthState } from "~/src/shared/auth";
+import { SignedIn, useAuthState } from "~/src/shared/auth";
 
 export default function Page() {
   const [selected, setSelected] = useState(0);
   const auth = useAuthState();
   return (
-    <Stack className=" px-[26px] py-6 bg-[#6D0000]  min-h-screen">
-      <ErrorBoundary fallback={null}>
-        <Suspense>
-          <Text className=" text-gray-50  whitespace-pre-wrap text-[32px] font-bold">{`CMC Team C's \nAdvent calendar`}</Text>
-        </Suspense>
-      </ErrorBoundary>
-      <div className=" h-[40px]" />
-      <ErrorBoundary fallback={<ErrorFallback />}>
-        <Suspense>
-          <Stack className=" grid grid-cols-3 gap-[16px]">
-            <SuspenseQuery {...userQueryQuestions()}>
-              {({ data: calendars }) => {
-                return (
-                  <Fragment>
-                    {CALENDARS.map((day) => (
-                      <AdventCalendarButton key={day} selected={selected === day} onClick={() => setSelected(day)}>
-                        {day}
-                      </AdventCalendarButton>
-                    ))}
-                  </Fragment>
-                );
-              }}
-            </SuspenseQuery>
-          </Stack>
-        </Suspense>
-      </ErrorBoundary>
-      <FixedBottom className=" pb-[48px] px-[16px]">
-        <Button
-          size={"lg"}
-          variant={"primary"}
-          onClick={() => {
-            socialDrawer.open({ link: `https://cmcteamc.vercel.app/${auth.user_id}` });
-          }}
-        >
-          내 캘린더 공유하기
-        </Button>
-      </FixedBottom>
-    </Stack>
+    <SignedIn>
+      <Stack className=" px-[26px] py-6 bg-[#6D0000]  min-h-screen">
+        <ErrorBoundary fallback={null}>
+          <Suspense>
+            <Text className=" text-gray-50  whitespace-pre-wrap text-[32px] font-bold">{`CMC Team C's \nAdvent calendar`}</Text>
+          </Suspense>
+        </ErrorBoundary>
+        <div className=" h-[40px]" />
+        <ErrorBoundary fallback={<ErrorFallback />}>
+          <Suspense>
+            <Stack className=" grid grid-cols-3 gap-[16px]">
+              <SuspenseQuery {...userQueryQuestions()}>
+                {({ data: calendars }) => {
+                  return (
+                    <Fragment>
+                      {CALENDARS.map((day) => (
+                        <AdventCalendarButton key={day} selected={selected === day} onClick={() => setSelected(day)}>
+                          {day}
+                        </AdventCalendarButton>
+                      ))}
+                    </Fragment>
+                  );
+                }}
+              </SuspenseQuery>
+            </Stack>
+          </Suspense>
+        </ErrorBoundary>
+        <FixedBottom className=" pb-[48px] px-[16px]">
+          <Button
+            size={"lg"}
+            variant={"primary"}
+            onClick={() => {
+              socialDrawer.open({ link: `https://cmcteamc.vercel.app/${auth.user_id}` });
+            }}
+          >
+            내 캘린더 공유하기
+          </Button>
+        </FixedBottom>
+      </Stack>
+    </SignedIn>
   );
 }
 

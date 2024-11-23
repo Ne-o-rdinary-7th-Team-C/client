@@ -44,7 +44,7 @@ export const useLogout = () => {
 export const SignedIn = (props: { children?: ReactNode; fallback?: ReactNode }) => {
   const isMount = useIsMounted();
   const { isLogin } = useAuthState();
-  if (isMount) {
+  if (!isMount) {
     return null;
   }
 
