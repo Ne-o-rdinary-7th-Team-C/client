@@ -39,7 +39,7 @@ export const IdAndPasswordStep = (props: Props) => {
               { loginId: id, password },
               {
                 onSuccess: (data) => {
-                  login(data.success.token);
+                  login(data.success.token, data.success.user_id);
                   onNext();
                 },
               },

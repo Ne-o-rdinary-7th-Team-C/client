@@ -29,6 +29,8 @@ export default function Page() {
               {({ data: calendars }) => {
                 return (
                   <Fragment>
+                    <div>{JSON.stringify(calendars.success)}</div>
+                    <div className=" h-40" />
                     {CALENDARS.map((day) => (
                       <AdventCalendarButton key={day} selected={selected === day} onClick={() => setSelected(day)}>
                         {day}
