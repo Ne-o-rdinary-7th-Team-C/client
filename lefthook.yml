@@ -1,8 +1,8 @@
 commit-msg:
   commands:
-    format-pretty:
-      run: |
-        pnpm run format:biome
+    format:
+      run: pnpm run format
+      
     lint-commit-msg:
       run: |
         npx commitlint --edit || {
