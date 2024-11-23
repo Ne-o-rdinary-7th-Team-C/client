@@ -14,12 +14,8 @@ import { Button } from "~/src/shared/ui/button";
 import { FixedBottom } from "~/src/shared/ui/FixedBottom";
 
 export default function First() {
-  const { data } = useSuspenseQuery(questionDateQueryOptions({ date: "" }));
-  // const mutation = questionDateQueryOptions();
-
   return (
     <div className={"h-screen py-[40px] px-[16px] flex-1"}>
-      <button onClick={() => mutation.mutate({ date: "sda" })}>릭릭</button>
       <div className={"text-center font-bold text-[28px] leading-[38px] my-[20px]"}>
         <div>나만의 어드벤트</div>
         <div>캘린더 만들기</div>

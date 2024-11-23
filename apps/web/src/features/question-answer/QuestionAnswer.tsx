@@ -8,4 +8,3 @@ type Props = {
 export const QuestionAnswer = (props: Props) => {
   return <div>hello</div>;
 };
-

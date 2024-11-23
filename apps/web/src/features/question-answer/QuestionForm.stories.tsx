@@ -10,7 +10,7 @@ export const Default: StoryObj = {
   render: () => {
     return (
       <GlobalLayout>
-        <QuestionForm />
+        <QuestionForm username={""} date={""} />
       </GlobalLayout>
     );
   },
