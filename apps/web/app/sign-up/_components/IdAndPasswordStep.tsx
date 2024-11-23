@@ -1,10 +1,11 @@
-import { useMutation } from "@tanstack/react-query";
 import { useDraft } from "@xionwcfm/react";
 import { useLogin } from "~/src/shared/auth";
 import { Input } from "~/src/shared/ui/input";
 import { Button } from "~/src/shared/ui/button";
+import { useUserRegister } from "~/src/api/remotes";
+
 type Props = {
-  onNext: (value: { id: string; password: string }) => void;
+  onNext: () => void;
   id: string;
   password: string;
 };
@@ -12,8 +13,8 @@ export const IdAndPasswordStep = (props: Props) => {
   const { onNext } = props;
   const [id, setId] = useDraft(props.id);
   const [password, setPassword] = useDraft(props.password);
-  const { mutate } = useRegisterMutation();
   const login = useLogin();
+  const { mutate } = useUserRegister();
 
   return (
     <div className="flex flex-col justify-between h-[calc(100vh-80px)]">
@@ -32,8 +33,17 @@ export const IdAndPasswordStep = (props: Props) => {
       <div className="mt-auto">
         <Button
           size="lg"
+          disabled={id.length < 3 || password.length < 7 || password.length > 16}
           onClick={() => {
-            onNext({ id, password });
+            mutate(
+              { loginId: id, password },
+              {
+                onSuccess: (data) => {
+                  login(data.success.token);
+                  onNext();
+                },
+              },
+            );
           }}
         >
           가입하기
@@ -41,8 +51,4 @@ export const IdAndPasswordStep = (props: Props) => {
       </div>
     </div>
   );
-};
-
-const useRegisterMutation = () => {
-  return useMutation({ mutationFn: async () => {} });
 };

@@ -8,12 +8,14 @@ import { Stack } from "~/src/shared/ui/Stack";
 
 export default function Page() {
   const [Funnel, onNext] = useFunnel(["password", "nickname"] as const);
+
   const [state, setState] = useState({
     id: "",
     password: "",
     nickname: "",
     color: "",
   });
+
   return (
     <Funnel>
       <Funnel.Step name={"password"}>
@@ -23,7 +25,7 @@ export default function Page() {
       </Funnel.Step>
       <Funnel.Step name={"nickname"}>
         <PaddingLayout>
-          <NickNameStep onNext={() => {}} nickname={state.nickname} color={state.color} />
+          <NickNameStep onNext={() => {}} />
         </PaddingLayout>
       </Funnel.Step>
     </Funnel>

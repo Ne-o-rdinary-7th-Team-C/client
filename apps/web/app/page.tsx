@@ -20,7 +20,9 @@ export default function First() {
         </Button>
         <div className={"mt-[12px] flex flex-wrap gap-x-1 justify-center"}>
           <span className={"text-gray-400"}>이미 계정이 있나요?</span>
-          <span className={"text-primaryColor1"}>로그인</span>
+          <button className={"text-primaryColor1"} onClick={() => router.push($Routes.login())}>
+            로그인
+          </button>
         </div>
       </FixedBottom>
     </div>
