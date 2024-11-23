@@ -36,11 +36,7 @@ export interface PushNotificationResponse {
 
 export type DownloadImageReturn =
   | {
-      status:
-        | "permission_denied"
-        | "permission_required"
-        | "canceled"
-        | "download_failed";
+      status: "permission_denied" | "permission_required" | "canceled" | "download_failed";
       success: false;
     }
   | {
@@ -88,7 +84,7 @@ export type AbstractBridgeFunctions = {
   requestNotificationPermission: () => Promise<void>;
   sendPushNotification: (
     expoPushToken: string,
-    option: Omit<PushNotificationMessage, "to">
+    option: Omit<PushNotificationMessage, "to">,
   ) => Promise<PushNotificationResponse | null>;
   notifyStatusBar: (state: StatusBarProps) => Promise<void>;
   notifySafeArea: (edges: SafeAreaEdges[]) => Promise<void>;

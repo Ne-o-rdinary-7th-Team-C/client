@@ -13,6 +13,7 @@
     "@internal/bridge": "workspace:*",
     "@internal/bridge-web": "workspace:*",
     "@internal/http": "workspace:*",
+    "@radix-ui/react-dialog": "^1.1.2",
     "@suspensive/react": "catalog:",
     "@tanstack/react-query": "catalog:react-query5",
     "@xionwcfm/react": "catalog:",
@@ -23,6 +24,8 @@
     "react-dom": "catalog:react19",
     "react-hook-form": "catalog:",
     "sharp": "catalog:",
+    "sonner": "^1.7.0",
+    "vaul": "^1.1.1",
     "zod": "catalog:"
   },
   "devDependencies": {
