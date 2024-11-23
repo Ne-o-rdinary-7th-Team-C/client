@@ -3,12 +3,12 @@ import { cn } from "./cn";
 import { cva, VariantProps } from "class-variance-authority";
 
 const inputVarinats = cva(
-  "w-[288px] h-[48px] px-[16px] py-[13px] items-center gap-[10px] text-[16px] rounded-small transition-all duration-200",
+  "flex w-full h-[48px] px-[16px] py-[13px] items-center gap-[10px] text-[16px] rounded-small transition-all duration-200",
   {
     variants: {
       variant: {
         outline: `
-          border-line
+          border border-line
           focus:border-black
           disabled:border-none
 
@@ -20,6 +20,9 @@ const inputVarinats = cva(
           disabled:bg-disabled
         `,
       },
+    },
+    defaultVariants: {
+      variant: "outline",
     },
   },
 );
