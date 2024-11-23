@@ -10,7 +10,7 @@ export const httpInstance = createInstance({
 
   prefixUrl: "https://umc.skyofseoul.synology.me",
 
-  credentials: "include",
+  // credentials: "include",
 
   hooks: {
     beforeRequest: [
@@ -31,7 +31,5 @@ export const httpInstance = createInstance({
 export const authHttp = createHttp(httpInstance);
 
 export const http = createHttp({
-
   prefixUrl: "https://umc.skyofseoul.synology.me",
-
 });
