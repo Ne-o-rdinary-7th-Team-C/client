@@ -5,6 +5,8 @@ import { Text } from "~/src/shared/ui/text";
 import Image from "next/image";
 import { Stack } from "~/src/shared/ui/Stack";
 import { overlay } from "overlay-kit";
+import { copyCLipboard } from "~/src/shared/bridge/copy-clipboard";
+import { toast } from "sonner";
 
 const SOCIAL_SHARE_LIST = [
   { src: "/icons/instagram.webp", label: "인스타그램" },
@@ -41,7 +43,13 @@ export const SocialDrawer = (props: { isOpen: boolean; onClose: () => void; link
             ))}
           </Flex>
           <div className=" w-full my-[16px] h-[0.5px] bg-gray-100" />
-          <button className=" transition-all duration-200 active:scale-[0.99] w-full flex  gap-[16px] items-center">
+          <button
+            onClick={() => {
+              copyCLipboard(props.link);
+              toast.success("링크가 복사되었어요");
+            }}
+            className=" transition-all duration-200 active:scale-[0.99] w-full flex  gap-[16px] items-center"
+          >
             <Image src={"/icons/copylink.webp"} alt="링크복사" width={48} height={48} />
             <Text variant={"headline-m"} className=" text-gray-500">
               링크 복사
