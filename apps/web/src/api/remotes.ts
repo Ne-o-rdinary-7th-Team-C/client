@@ -10,14 +10,10 @@ const $queryKeys = {
   questions: () => ["questions"],
   questionsByDate: (date: string) => ["questions", date],
   questionsViewUser: (user_id: string) => ["questions", user_id],
-  questionsViewUserDate: (params: { user_id: string; date: string }) => [
-    "questions",
-    params,
-  ],
+  questionsViewUserDate: (params: { user_id: string; date: string }) => ["questions", params],
 };
 
-export const userQueryOptions = () =>
-  queryOptions({ queryKey: $queryKeys.user(), queryFn: getUser });
+export const userQueryOptions = () => queryOptions({ queryKey: $queryKeys.user(), queryFn: getUser });
 
 type PostUserLoginRequest = {
   login_id: string;
@@ -35,13 +31,8 @@ type PostUserLoginResponse = ApiResponse<{
   token: string;
 }>;
 
-const postUserLogin = async (
-  body: PostUserLoginRequest
-): Promise<PostUserLoginResponse> => {
-  return http.post<PostUserLoginRequest, PostUserLoginResponse>(
-    "user/login",
-    body
-  );
+const postUserLogin = async (body: PostUserLoginRequest): Promise<PostUserLoginResponse> => {
+  return http.post<PostUserLoginRequest, PostUserLoginResponse>("user/login", body);
 };
 
 // 안됩니다.
@@ -55,13 +46,8 @@ type PostUserValidationResponse = ApiResponse<{
   login_id: string;
 }>;
 
-const postUserValidation = async (
-  body: PostUserValidationRequest
-): Promise<PostUserValidationResponse> => {
-  return http.post<PostUserValidationRequest, PostUserValidationResponse>(
-    "user/validation",
-    body
-  );
+const postUserValidation = async (body: PostUserValidationRequest): Promise<PostUserValidationResponse> => {
+  return http.post<PostUserValidationRequest, PostUserValidationResponse>("user/validation", body);
 };
 
 //안됩니다.
@@ -84,13 +70,8 @@ type PostUserRegisterResponse = ApiResponse<{
   token: string;
 }>;
 
-export const postUserRegister = async (
-  body: PostUserRegisterRequest
-): Promise<PostUserRegisterResponse> => {
-  return http.post<PostUserRegisterRequest, PostUserRegisterResponse>(
-    "user/register",
-    body
-  );
+export const postUserRegister = async (body: PostUserRegisterRequest): Promise<PostUserRegisterResponse> => {
+  return http.post<PostUserRegisterRequest, PostUserRegisterResponse>("user/register", body);
 };
 
 //안됩니다.
@@ -110,13 +91,8 @@ type PatchUserRegisterResponse = ApiResponse<{
   updated_at: string;
 }>;
 
-export const patchUserRegister = async (
-  body: PatchUserRegisterRequest
-): Promise<PatchUserRegisterResponse> => {
-  return authHttp.patch<PatchUserRegisterRequest, PatchUserRegisterResponse>(
-    "user/register",
-    body
-  );
+export const patchUserRegister = async (body: PatchUserRegisterRequest): Promise<PatchUserRegisterResponse> => {
+  return authHttp.patch<PatchUserRegisterRequest, PatchUserRegisterResponse>("user/register", body);
 };
 
 //안됩니다.
@@ -138,8 +114,7 @@ const getQuestions = async () => {
   return authHttp.get<GetQuestionsResponse>("/questions");
 };
 
-export const userQueryQuestions = () =>
-  queryOptions({ queryKey: $queryKeys.questions(), queryFn: getQuestions });
+export const userQueryQuestions = () => queryOptions({ queryKey: $queryKeys.questions(), queryFn: getQuestions });
 
 type GetQuestionsDateRequest = {
   date: string;
@@ -181,13 +156,8 @@ type PostQuestionsAnswerResponse = ApiResponse<{
   content: string;
 }>;
 /*** */
-const postQuestionsAnswer = async (
-  param: PostQuestionsAnswerRequest & { question_id: string }
-) => {
-  return authHttp.post<any, PostQuestionsAnswerResponse>(
-    `${param.question_id}/answer`,
-    param
-  );
+const postQuestionsAnswer = async (param: PostQuestionsAnswerRequest & { question_id: string }) => {
+  return authHttp.post<any, PostQuestionsAnswerResponse>(`${param.question_id}/answer`, param);
 };
 
 export const useQuestionsAnswer = createMutation({
@@ -198,9 +168,7 @@ export const useQuestionsAnswer = createMutation({
 type GetQuestionsViewUserResponse = ApiResponse<number[]>;
 
 const getQuestionsViewUser = async (param: { user_id: string }) => {
-  return http.get<GetQuestionsViewUserResponse>(
-    `questions/view/user/${param.user_id}`
-  );
+  return http.get<GetQuestionsViewUserResponse>(`questions/view/user/${param.user_id}`);
 };
 
 export const userQueryQuestionsViewUser = (param: { user_id: string }) =>
@@ -244,10 +212,7 @@ type PostQuestionsResponse = ApiResponse<{
 }>;
 
 const postQuestions = async (body: PostQuestionsRequest) => {
-  return http.post<PostQuestionsRequest, PostQuestionsResponse>(
-    `questions`,
-    body
-  );
+  return http.post<PostQuestionsRequest, PostQuestionsResponse>(`questions`, body);
 };
 
 export const usePostQuestions = createMutation({ mutationFn: postQuestions });
