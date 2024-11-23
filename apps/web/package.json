@@ -37,6 +37,7 @@
     "postcss": "catalog:",
     "tailwind-merge": "^2.5.4",
     "tailwindcss": "catalog:",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "catalog:"
   }
 }

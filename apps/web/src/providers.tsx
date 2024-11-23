@@ -3,6 +3,7 @@ import { DefaultProps, DefaultPropsProvider, ErrorBoundary, Suspense } from "@su
 import { QueryClient, QueryClientProvider, QueryErrorResetBoundary } from "@tanstack/react-query";
 import { OverlayProvider } from "overlay-kit";
 import { PropsWithChildren, useState } from "react";
+import { Toaster } from "sonner";
 
 export const Providers = ({ children }: PropsWithChildren) => {
   const [defaultProps] = useState(() => new DefaultProps({ Delay: { ms: 200 } }));
@@ -26,7 +27,10 @@ export const Providers = ({ children }: PropsWithChildren) => {
           <QueryErrorResetBoundary>
             {({ reset }) => (
               <ErrorBoundary onReset={reset} fallback={null}>
-                <Suspense fallback={null}>{children}</Suspense>
+                <Suspense fallback={null}>
+                  {children}
+                  <Toaster position={"top-center"} />
+                </Suspense>
               </ErrorBoundary>
             )}
           </QueryErrorResetBoundary>
