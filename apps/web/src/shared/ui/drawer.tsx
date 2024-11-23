@@ -33,7 +33,6 @@ const Overlay = forwardRef<
 >(({ className, ...props }, ref) => (
   <DrawerPrimitive.Overlay ref={ref} className={`fixed inset-0  bg-[rgba(0,0,0,0.4)]  ${className}`} {...props} />
 ));
-Overlay.displayName = DrawerPrimitive.Overlay.displayName;
 
 const Content = forwardRef<
   ElementRef<typeof DrawerPrimitive.Content>,
@@ -69,12 +68,10 @@ const Title = forwardRef<
   ElementRef<typeof DrawerPrimitive.Title>,
   ComponentPropsWithoutRef<typeof DrawerPrimitive.Title>
 >(({ className, ...props }, ref) => <DrawerPrimitive.Title ref={ref} className={className} {...props} />);
-Title.displayName = DrawerPrimitive.Title.displayName;
 
 const Description = forwardRef<
   ElementRef<typeof DrawerPrimitive.Description>,
   ComponentPropsWithoutRef<typeof DrawerPrimitive.Description>
 >(({ className, ...props }, ref) => <DrawerPrimitive.Description ref={ref} className={className} {...props} />);
-Description.displayName = DrawerPrimitive.Description.displayName;
 
 export { Root, Trigger, Portal, Close, Handle, Overlay, Content, Header, Footer, Title, Description };
