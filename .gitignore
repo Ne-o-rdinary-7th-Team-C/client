@@ -42,3 +42,6 @@ yarn-error.log*
 *.pem
 
 *storybook.log
+apps/web/.turbo/turbo-build.log
+*.turbo
+*.log
