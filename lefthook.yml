@@ -1,8 +1,5 @@
 commit-msg:
   commands:
-    format:
-      run: pnpm run format
-      
     lint-commit-msg:
       run: |
         npx commitlint --edit || {
@@ -24,6 +21,12 @@ commit-msg:
           echo "  feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert"
           exit 1
         }
+
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      run: pnpm run format:biome
 
 pre-push:
   parallel: true
