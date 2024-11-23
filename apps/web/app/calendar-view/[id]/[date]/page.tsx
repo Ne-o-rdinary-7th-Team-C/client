@@ -22,7 +22,7 @@ export default function Page() {
       <QuestionForm
         username={username}
         onNext={({ nickname, answer }) => {
-          mutation.mutate({ nickname, answer, id: params.id, date: params.date });
+          // mutation.mutate({ nickname, answer, id: params.id, date: params.date });
           router.push("/");
         }}
         date={params.id}
