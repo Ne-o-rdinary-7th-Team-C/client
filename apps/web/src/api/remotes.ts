@@ -3,7 +3,7 @@ import { createMutation } from "@xionwcfm/react-query";
 import { queryOptions } from "@tanstack/react-query";
 import { ApiResponse } from "../shared/types/api.type";
 
-const getUser = async () => authHttp.get("user");
+const getUser = async (param: {id: number}) => authHttp.get<ApiResponse<{nickname:null | string}>>(`user/${param.id}`);
 
 const $queryKeys = {
   user: () => ["user"],
@@ -13,7 +13,7 @@ const $queryKeys = {
   questionsViewUserDate: (params: { user_id: string; date: string }) => ["questions", params],
 };
 
-export const userQueryOptions = () => queryOptions({ queryKey: $queryKeys.user(), queryFn: getUser });
+export const userQueryOptions = (param: {id: number}) => queryOptions({ queryKey: $queryKeys.user(), queryFn: async ()=>getUser(param) });
 
 type PostUserLoginRequest = {
   login_id: string;
