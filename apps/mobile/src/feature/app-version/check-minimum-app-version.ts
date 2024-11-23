@@ -1,7 +1,4 @@
-export const validateMinimumAppVersion = (
-  minimumVersion: string,
-  userAppVersion: string | null
-) => {
+export const validateMinimumAppVersion = (minimumVersion: string, userAppVersion: string | null) => {
   if (!userAppVersion) {
     return false;
   }
@@ -10,14 +7,14 @@ export const validateMinimumAppVersion = (
     minimumVersion
       .split(".")
       .map((item) => item.padStart(2, "0"))
-      .join("")
+      .join(""),
   );
 
   const result = Number.parseInt(
     userAppVersion
       .split(".")
       .map((item) => item.padStart(2, "0"))
-      .join("")
+      .join(""),
   );
   if (Number.isNaN(result)) return false;
   return result >= minimum;

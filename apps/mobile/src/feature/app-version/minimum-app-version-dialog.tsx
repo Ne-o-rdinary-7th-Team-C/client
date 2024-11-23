@@ -7,14 +7,9 @@ import { Linking, Alert } from "react-native";
 import { useEffect } from "react";
 
 export const MinimumAppVersionDialog = () => {
-  const { data: minimumAppVersion } = useSuspenseQuery(
-    getMinimumAppVersionQueryOptions()
-  );
+  const { data: minimumAppVersion } = useSuspenseQuery(getMinimumAppVersionQueryOptions());
   const userAppVersion = getUserAppVersion();
-  const shouldUpdate = !validateMinimumAppVersion(
-    minimumAppVersion,
-    userAppVersion
-  );
+  const shouldUpdate = !validateMinimumAppVersion(minimumAppVersion, userAppVersion);
   const isomorphicUpdateUrl = getUpdateUrl();
 
   useEffect(() => {
@@ -32,7 +27,7 @@ export const MinimumAppVersionDialog = () => {
             },
           },
         ],
-        { cancelable: false }
+        { cancelable: false },
       );
     }
   }, [shouldUpdate, isomorphicUpdateUrl]);

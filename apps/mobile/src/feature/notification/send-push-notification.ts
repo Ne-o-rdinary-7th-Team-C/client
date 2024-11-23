@@ -1,12 +1,9 @@
-import {
-  PushNotificationMessage,
-  PushNotificationResponse,
-} from "@internal/bridge/src";
+import { PushNotificationMessage, PushNotificationResponse } from "@internal/bridge/src";
 import http from "../../http";
 
 export async function sendPushNotification(
   expoPushToken: string,
-  option: Omit<PushNotificationMessage, "to">
+  option: Omit<PushNotificationMessage, "to">,
 ): Promise<PushNotificationResponse | null> {
   try {
     const message: PushNotificationMessage = {
@@ -18,10 +15,10 @@ export async function sendPushNotification(
     };
     console.log("알림 전송 시작:", expoPushToken);
 
-    const response = await http.post<
-      PushNotificationMessage,
-      PushNotificationResponse
-    >("https://exp.host/--/api/v2/push/send", message);
+    const response = await http.post<PushNotificationMessage, PushNotificationResponse>(
+      "https://exp.host/--/api/v2/push/send",
+      message,
+    );
 
     return response;
   } catch (error) {

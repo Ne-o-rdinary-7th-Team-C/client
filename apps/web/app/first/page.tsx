@@ -1,5 +1,7 @@
 "use client";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import { userQueryOptions } from "~/src/api/remotes";
 import { Button } from "~/src/shared/ui/button";
 import { FixedBottom } from "~/src/shared/ui/FixedBottom";
 

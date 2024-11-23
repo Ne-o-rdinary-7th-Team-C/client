@@ -2,8 +2,7 @@ import * as ImagePicker from "expo-image-picker";
 import { Alert, Linking } from "react-native";
 import { ImageAsset, type UploadImageReturn } from "@internal/bridge";
 export const uploadImage = async (): Promise<UploadImageReturn> => {
-  const { granted, canAskAgain } =
-    await ImagePicker.requestMediaLibraryPermissionsAsync();
+  const { granted, canAskAgain } = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
   if (!granted) {
     if (!canAskAgain) {
