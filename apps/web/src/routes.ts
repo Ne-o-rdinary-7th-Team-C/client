@@ -7,9 +7,9 @@ export const $Routes = {
   calendar: () => "/calendar",
   qna: (date: string) => `/calendar/${date}`,
 
-  userCalendar: (userId: string) => `/calendar/${userId}`,
-  selectDate: (userId: string) => `/select-date/${userId}`,
+  userCalendar: (userId: string) => `/calendar-view/${userId}`,
+  selectDate: (userId: string) => `/select/${userId}`,
   question: (userId: string) => `/question/${userId}`,
-  answer: (userId: string, date: string) => `/calendar/${userId}/${date}`,
+  answer: (userId: string, date: string) => `/calendar-view/${userId}/${date}`,
   complete: (userId: string) => `/complete/${userId}`,
 };
