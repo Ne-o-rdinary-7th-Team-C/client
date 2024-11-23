@@ -13,10 +13,11 @@ import { SuspenseQuery } from "@suspensive/react-query";
 import { ErrorBoundary, Suspense } from "@suspensive/react";
 import { CALENDARS } from "~/src/features/advent-calendar/constants";
 import { Fragment, useState } from "react";
+import { useAuthState } from "~/src/shared/auth";
 
 export default function Page() {
   const [selected, setSelected] = useState(0);
-
+  const auth = useAuthState();
   return (
     <Stack className=" px-[26px] py-6 bg-[#6D0000]  min-h-screen">
       <ErrorBoundary fallback={null}>
@@ -49,7 +50,7 @@ export default function Page() {
           size={"lg"}
           variant={"primary"}
           onClick={() => {
-            socialDrawer.open({ link: "/dsa" });
+            socialDrawer.open({ link: `https://cmcteamc.vercel.app/${auth.user_id}` });
           }}
         >
           내 캘린더 공유하기

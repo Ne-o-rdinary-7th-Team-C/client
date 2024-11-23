@@ -39,7 +39,7 @@ export const Login = () => {
               { login_id: id, password },
               {
                 onSuccess: (data) => {
-                  login(data.success.token);
+                  login(data.success.token, data.success.user_id);
                   router.push($Routes.calendar());
                 },
               },
