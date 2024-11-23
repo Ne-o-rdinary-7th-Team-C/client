@@ -1,21 +1,28 @@
+import { useState } from "react";
+
 import { Input } from "~/src/shared/ui/input";
 import { Text } from "~/src/shared/ui/text";
 import Image from "next/image";
 import { Button } from "~/src/shared/ui/button";
 import { FixedBottom } from "~/src/shared/ui/FixedBottom";
+import { usePostQuestions } from "~/src/api/remotes";
+import { useInputState } from "@xionwcfm/react";
 
 type Props = {
   username: string;
-  onNext?: () => void;
+  onNext?: (value: { nickname: string; answer: string }) => void;
   date: string;
 };
 
 export const QuestionForm = (props: Props) => {
+  const [nickname, onNicknameChange] = useInputState("");
+  const [answer, onAnswerChange] = useInputState("");
+
   return (
     <div className="relative w-full h-screen ">
       <Image src={"/backgrounds/question-form.webp"} fill alt="qna" />
       <div className="relative px-[16px] mb-[20px] mt-[3px]">
-        <Text variant={"display01"}>12월 3일</Text>
+        <Text variant={"display01"}>{props.date}</Text>
       </div>
       <div
         className="relative
@@ -23,10 +30,10 @@ export const QuestionForm = (props: Props) => {
           px-[16px]
           "
       >
-        <Input placeholder="별명을 적어주세요" className="mb-[20px]" />
+        <Input placeholder="별명을 적어주세요" className="mb-[20px]" onChange={onNicknameChange} />
 
-        <Text variant={"subhead03"} className="text-white">
-          {}님께 어떤 질문을 하고 싶나요?
+        <Text variant={"subhead03"} className="text-white" onChange={onAnswerChange}>
+          {props.username}님께 어떤 질문을 하고 싶나요?
         </Text>
         <Input
           placeholder="최소 10자 이상 입력해주세요."
@@ -34,8 +41,8 @@ export const QuestionForm = (props: Props) => {
         />
       </div>
       <FixedBottom>
-        <div className={"p-[20px] bg-white"}>
-          <Button variant={"primary"} size={"lg"}>
+        <div className={"shadow-[2px_0_10px_0_rgba(0, 0, 0, 0.)] p-[20px] bg-white"}>
+          <Button variant={"primary"} size={"lg"} onClick={() => props?.onNext?.({ nickname, answer })}>
             질문하기
           </Button>
         </div>
