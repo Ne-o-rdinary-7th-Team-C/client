@@ -21,7 +21,7 @@ export const IdAndPasswordStep = (props: Props) => {
   //   },
   // });
   return (
-    <div className="flex flex-col justify-between h-screen">
+    <div className="flex flex-col justify-between h-[calc(100vh-80px)]">
       <div>
         <p className={"font-bold text-[24px] leading-[34px] my-[20px]"}>회원가입</p>
         <p className={"font-medium text-[16px] leading-[16px] my-[12px]  mt-[65px]"}>아이디</p>
@@ -34,7 +34,7 @@ export const IdAndPasswordStep = (props: Props) => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <div className="mt-auto mb-[48px]">
+      <div className="mt-auto">
         <Button
           size="lg"
           onClick={() => {
