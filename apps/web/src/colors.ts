@@ -8,9 +8,9 @@ export const colors = {
   line: "#EBEDF1",
   white: "#FFFFFF",
 
-  primaryColor1: "#DC2244",
-  primaryColor2: "#F2274C",
-  primaryColor3: "#FBBEC9",
+  primaryColor1: "#114B0B",
+  primaryColor2: "#26711F",
+  primaryColor3: "#80B37B",
 
   illustColor1: "#F2274C",
   illustColor2: "#64BF39",
