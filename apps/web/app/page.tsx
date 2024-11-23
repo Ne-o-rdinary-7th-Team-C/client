@@ -29,5 +29,3 @@ export default function Home() {
     </div>
   );
 }
-  return <div></div>;
-}
